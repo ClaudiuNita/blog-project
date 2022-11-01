@@ -1,0 +1,13 @@
+
+R
+java:S4973d"<Strings and Boxed types should be compared using "equals()".(»¤º
+s
+java:S3655*"XCall "roleOptional.isPresent()" or "!roleOptional.isEmpty()" before accessing the value.(¼òÿíÿÿÿÿÿ
+k
+java:S3655K"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(‰ÎÒ”úÿÿÿÿ
+V	java:S125<"<This block of commented-out lines of code should be removed.(á‡Ãíıÿÿÿÿ
+S	java:S106L"9Replace this use of System.out or System.err by a logger.(Í¢…Ïÿÿÿÿÿ
+E
+java:S1874W"/Remove this use of "getById"; it is deprecated.(¤ÀŠÜ
+E
+java:S1874b"/Remove this use of "getById"; it is deprecated.(³‰øß

@@ -1,0 +1,27 @@
+<p>Welcome to the Acasa page!</p>
+
+<p>Request data from database:</p>
+
+<form action="/{userId}">
+  <label><b>User Id: </b></label>
+  <input type="text" name="userId" [formControl]="form">
+  <input type="submit" value="get" (click)="getUser()" >
+</form>
+
+<div *ngIf="user">
+  <p>Rezultat:</p>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Email</th>
+    </tr>
+    <tr>
+      <td>{{user.id}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="error">{{error}}</div>
+<!--<div *ngIf="error.length > 3">{{error}}</div>-->
+
+
