@@ -8,11 +8,11 @@ import {Observable} from "rxjs";
 })
 export class UserService {
 
-  private getUsersUrl = 'http://localhost:8090/blog/getUsers';
-  private getUserUrl = 'http://localhost:8090/blog/getUser';
-  private addUserUrl = 'http://localhost:80890/blog/postUser';
-  private updateUserUrl = 'http://localhost:8090/blog/updateUser';
-  private deleteUserUrl = 'http://localhost:8090/blog/deleteUser';
+  private getUsersUrl = '/blog/getUsers';
+  private getUserUrl = '/blog/getUser';
+  private addUserUrl = '/blog/postUser';
+  private updateUserUrl = '/blog/updateUser';
+  private deleteUserUrl = '/blog/deleteUser';
 
   constructor(private http: HttpClient) { }
 
