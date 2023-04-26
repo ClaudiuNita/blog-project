@@ -1,5 +1,6 @@
 package com.example.blogapi.service;
 
+import com.example.blogapi.DTO.UserDTO;
 import com.example.blogapi.model.User;
 import com.example.blogapi.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
@@ -38,11 +39,11 @@ public class BlogServiceTest {
         when(userRepository.findAll()).thenReturn(users);
 
         List<User> expectedUsers = Arrays.asList(user0, user1);
-        //List<User> resultUsers = blogService.getAllUsers();
+        List<UserDTO> resultUsers = blogService.getAllUsers();
 
         //Assertions.assertTrue(resultUsers.containsAll(expectedUsers) && expectedUsers.containsAll(resultUsers));
         //Assertions.assertTrue(resultUsers.equals(expectedUsers));
-        //Assertions.assertEquals(resultUsers, expectedUsers);
+        Assertions.assertEquals(resultUsers, expectedUsers);
     }
 
     @Test
