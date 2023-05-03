@@ -292,9 +292,17 @@ svg#clouds {
   }
 }
 
+/* THIS IS THE BEGINING CSS */
+
+.blog-content {
+  position: fixed;
+  top: 22%;
+}
+
 nav {
-  padding: 5px;
-  background-color: aliceblue;
+  padding: 10px;
+  border-style: outset;
+  border-color: aliceblue;
   border-radius: 5px;
 }
 
