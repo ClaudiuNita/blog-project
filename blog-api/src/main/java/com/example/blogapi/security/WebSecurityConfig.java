@@ -19,21 +19,16 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> {
                                 requests
-                                        .antMatchers("/h2-console/**").permitAll()
                                         .anyRequest().authenticated();
                                 }
                 )
                 .formLogin()
-                .defaultSuccessUrl("http://localhost:4200/acasa", true);
-
-        http
+                .defaultSuccessUrl("http://localhost:4200/acasa", true)
+                .and()
                 .logout()
-                .logoutSuccessUrl("http://localhost:4200/acasa");
-
-        http    .csrf(csrf -> csrf
-                        .ignoringAntMatchers("/h2-console/**"));
-        
-        http    .headers().frameOptions().disable();
+                .logoutSuccessUrl("http://localhost:4200/acasa")
+                .and().csrf().disable()
+                .headers().frameOptions().disable();
 
         return http.build();
     }

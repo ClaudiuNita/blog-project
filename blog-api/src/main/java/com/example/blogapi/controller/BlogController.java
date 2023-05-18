@@ -14,7 +14,7 @@ import java.util.List;
 //@Controller
 @RestController
 @RequestMapping(value = "/blog")
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class BlogController {
 
 
@@ -41,7 +41,6 @@ public class BlogController {
     @GetMapping("/getUser/{id}")
     public UserDTO getUserById(@PathVariable Long id) {
 
-        System.out.println("controller");
         return blogService.getUserById(id);
     }
 

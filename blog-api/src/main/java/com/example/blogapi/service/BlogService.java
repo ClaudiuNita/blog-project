@@ -73,7 +73,7 @@ public class BlogService {
     public UserDTO getUserById(Long id){
 
             User user = userRepository.findById(id).get();
-            System.out.println("ajunge aici");
+
             return new UserDTO(user.getId(), user.getEmailAddress(), user.getPassword());
     }
 

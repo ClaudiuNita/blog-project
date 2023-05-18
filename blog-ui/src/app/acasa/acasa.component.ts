@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap, Router, Routes} from "@angular/router";
-import {User} from "../User";
-import {UserService} from "../user.service";
-import {FormControl, FormsModule} from "@angular/forms";
-import {UsersComponent} from "../users/users.component";
+import { FormControl } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { User } from "../User";
+import { UserService } from "../user.service";
 
 @Component({
   selector: 'app-acasa',
@@ -33,6 +32,7 @@ export class AcasaComponent implements OnInit {
       err => {
           console.log(err.error);
           this.error = err.error.status;
+          this.user = undefined;
       }
     );
   }
