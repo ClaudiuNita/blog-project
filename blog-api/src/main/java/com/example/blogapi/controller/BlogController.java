@@ -1,15 +1,16 @@
 package com.example.blogapi.controller;
 
 import com.example.blogapi.DTO.UserDTO;
+import com.example.blogapi.model.Text;
 import com.example.blogapi.model.User;
 import com.example.blogapi.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
-
 
 //@Controller
 @RestController
@@ -17,12 +18,24 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class BlogController {
 
-
     private BlogService blogService;
 
     @Autowired
     public BlogController(BlogService blogService) {
         this.blogService = blogService;
+    }
+
+    @RequestMapping(value = "/username", method = RequestMethod.GET)
+    @ResponseBody
+    public Text currentUserName(HttpServletRequest request) {
+
+        if(request.getUserPrincipal() != null) {
+
+            Principal principal = request.getUserPrincipal();
+            return new Text(principal.getName());
+        } else {
+            return new Text("null");
+        }
     }
 
     @GetMapping

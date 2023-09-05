@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import { UserService } from './user.service';
+import { User } from './User';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +11,20 @@ import {Router} from "@angular/router";
 export class AppComponent {
   title = 'blog';
 
-  constructor(private router: Router) {
+  isLoggedIn = false;
+
+  constructor(private router: Router, private userService: UserService) {
   }
+
+   ngOnInit() {
+      this.router.events.subscribe(event => {
+        if (event.constructor.name === "NavigationEnd") {
+         this.userService.getUsername().subscribe(
+          user => this.isLoggedIn = (user.info == 'user')? true:false 
+          );
+        }
+      })
+   }
 
   goAcasa(){
     this.router.navigate(['/acasa']);

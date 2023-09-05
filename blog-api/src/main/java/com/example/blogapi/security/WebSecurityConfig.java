@@ -19,6 +19,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> {
                                 requests
+                                        .antMatchers("/blog/username").permitAll()
                                         .anyRequest().authenticated();
                                 }
                 )
