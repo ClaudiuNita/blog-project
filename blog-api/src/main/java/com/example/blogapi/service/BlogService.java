@@ -57,19 +57,6 @@ public class BlogService {
         return usersDTO;
     }
 
-//    public UserDTO getUserById(Long id) {
-//
-//        try {
-//            User user = userRepository.findById(id).get();
-//            return new UserDTO(user.getId(), user.getEmailAddress(), user.getPassword());
-//        } catch (NoSuchElementException e){
-//            log.error("" + e);
-//        }
-//
-//        return null;
-//    }
-
-
     public UserDTO getUserById(Long id){
 
             User user = userRepository.findById(id).get();

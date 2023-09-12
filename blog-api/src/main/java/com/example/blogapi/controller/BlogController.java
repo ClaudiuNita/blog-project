@@ -1,18 +1,12 @@
 package com.example.blogapi.controller;
 
 import com.example.blogapi.DTO.UserDTO;
-import com.example.blogapi.model.Text;
-import com.example.blogapi.model.User;
 import com.example.blogapi.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
 import java.util.List;
 
-//@Controller
 @RestController
 @RequestMapping(value = "/blog")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,62 +19,31 @@ public class BlogController {
         this.blogService = blogService;
     }
 
-    @RequestMapping(value = "/username", method = RequestMethod.GET)
-    @ResponseBody
-    public Text currentUserName(HttpServletRequest request) {
-
-        if(request.getUserPrincipal() != null) {
-
-            Principal principal = request.getUserPrincipal();
-            return new Text(principal.getName());
-        } else {
-            return new Text("null");
-        }
-    }
-
-    @GetMapping
-    public String blogPage(){
-
-        return "blog";
-    }
-
-    @GetMapping("/getUsers")
+    @GetMapping("/users")
     public List<UserDTO> getAllUsers(){
 
-        List<UserDTO> users = blogService.getAllUsers();
-        return users;
+        return blogService.getAllUsers();
     }
 
-    @GetMapping("/getUser/{id}")
+    @GetMapping("/users/{id}")
     public UserDTO getUserById(@PathVariable Long id) {
 
         return blogService.getUserById(id);
     }
 
-    @GetMapping("/add")
-    public String add(Model model){
-
-        List<User> users = blogService.addElementsInUserRoleTable();
-        model.addAttribute("userrole", users);
-
-        return "blog";
-    }
-
-    @PostMapping ("/postUser")
+    @PostMapping ("/user")
     public void addUser(@RequestBody String email){
 
-        System.out.println(email);
         blogService.addUser(email);
     }
 
-    @PutMapping("/updateUser")
+    @PutMapping("/user")
     public void updateUser(@RequestBody UserDTO user){
 
-        System.out.println(user.getId() + "" + user.getEmail());
         blogService.updateUserById(user.getId(), user.getEmail());
     }
 
-    @DeleteMapping("/deleteUser")
+    @DeleteMapping("/user")
     public void deleteUser(@RequestBody Long id){
 
         blogService.deleteUserById(id);

@@ -9,39 +9,35 @@ import { Text } from './Text';
 })
 export class UserService {
 
-  private getUsernameUrl = '/blog/username';
-  private getUsersUrl = '/blog/getUsers';
-  private getUserUrl = '/blog/getUser';
-  private addUserUrl = '/blog/postUser';
-  private updateUserUrl = '/blog/updateUser';
-  private deleteUserUrl = '/blog/deleteUser';
+  private baseUrl = '/blog';
+  private usersUrl = `${this.baseUrl}/users`;
+  private userUrl = `${this.baseUrl}/user`;
+  private usernameUrl = `${this.baseUrl}/username`;
 
   constructor(private http: HttpClient) { }
 
-  getUsername() {
-    return this.http.get<Text>(this.getUsernameUrl);
-  }
-
   getUsers(): Observable<User[]>{
-    return this.http.get<User[]>(this.getUsersUrl);
+    return this.http.get<User[]>(this.usersUrl);
   }
 
   getUser(id: bigint): Observable<User>{
-    const url = `${this.getUserUrl}/${id}`;
+    const url = `${this.usersUrl}/${id}`;
     return this.http.get<User>(url);
   }
 
   addUser(mail: string): Observable<any>{
-    let url = this.addUserUrl;
-    return this.http.post(url, mail);
+    return this.http.post(this.userUrl, mail);
   }
 
   updateUser(id: bigint, email: string) {
-    let url = this.updateUserUrl + "?id=" + id + "&email=" + email;
-    return this.http.put(this.updateUserUrl, {id, email});
+    return this.http.put(this.userUrl, {id, email});
   }
 
   deleteUser(id: bigint) {
-    return this.http.delete(this.deleteUserUrl, {body:id});
+    return this.http.delete(this.userUrl, {body:id});
+  }
+
+  getUsername() {
+    return this.http.get<Text>(this.usernameUrl);
   }
 }
