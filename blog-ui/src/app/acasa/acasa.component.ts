@@ -23,7 +23,7 @@ export class AcasaComponent implements OnInit {
 
   getUser(): void {
     // @ts-ignore
-    this.userService.getUser(BigInt(this.form.value)).subscribe(
+    this.userService.getUser(this.form.value? this.form.value:null).subscribe(
       user => {
           this.user = user
           this.error = ''

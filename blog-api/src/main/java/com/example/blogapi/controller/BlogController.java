@@ -26,9 +26,9 @@ public class BlogController {
     }
 
     @GetMapping("/users/{id}")
-    public UserDTO getUserById(@PathVariable Long id) {
+    public UserDTO getUserById(@PathVariable String id) {
 
-        return blogService.getUserById(id);
+        return blogService.getUserById(Long.parseLong(id));
     }
 
     @PostMapping ("/user")

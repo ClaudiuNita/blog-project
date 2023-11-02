@@ -5,7 +5,7 @@
 <form action="/{userId}">
   <label><b>User Id: </b></label>
   <input type="text" name="userId" [formControl]="form">
-  <input type="submit" value="get" (click)="getUser()" >
+  <input type="submit" value="get" (click)="getUser()">
 </form>
 
 <div *ngIf="user">

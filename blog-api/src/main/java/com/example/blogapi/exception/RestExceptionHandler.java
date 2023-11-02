@@ -40,7 +40,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(NumberFormatException.class)
     protected ResponseEntity<Object> handleNumberFormatException(NumberFormatException ex){
         ApiError apiError = new ApiError(BAD_REQUEST);
+        apiError.setMessage(ex.getMessage());
         return buildResponseEntity(apiError);
     }
-
 }
