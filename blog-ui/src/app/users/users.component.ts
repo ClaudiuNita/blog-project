@@ -10,6 +10,7 @@ import {UserService} from "../user.service";
 export class UsersComponent implements OnInit {
 
   users: User[] = [];
+  error: any;
 
   constructor(private userService: UserService) { }
 
@@ -18,8 +19,10 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers(): void{
-      this.userService.getUsers()
-        .subscribe(users => this.users = users);
+      this.userService.getUsers().subscribe(
+        users => {this.users = users;
+                  this.error = ''},
+        err => {this.error = 'User not logged in!'});
   }
 
   addUser(email: string): void {

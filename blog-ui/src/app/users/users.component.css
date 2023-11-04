@@ -5,3 +5,7 @@ td, th {
 .addForm {
   border: none;
 }
+
+#submit {
+  width: 100%;
+}

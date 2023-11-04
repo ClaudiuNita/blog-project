@@ -1,24 +1,36 @@
 <p>Welcome to the Users page!</p>
 
-<p>Database contents!</p>
-<table>
+<p>User database contents!</p>
+
+<table *ngIf="!error">
   <tr>
     <th>Id</th>
     <th>Email</th>
+    <th>Actions</th>
   </tr>
   <tr *ngFor="let user of users">
     <td> {{user.id}} </td>
     <td>
       <input type="text" [(ngModel)]="user.email">
     </td>
-    <button (click)="updateUser(user.id, user.email)">Update</button>
-    <button (click)="deleteUser(user.id)">Delete</button>
+    <td>
+      <button (click)="updateUser(user.id, user.email)">Update</button>
+      <button (click)="deleteUser(user.id)">Delete</button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      --
+    </td>
+    <td>
+      <form>
+        <input id="email" type="text" #email>
+      </form>
+    </td>
+    <td>
+      <input id="submit" type="submit" value="Add" (click)="addUser(email.value)">
+    </td>
   </tr>
 </table>
 
-<form>
-  ----
-  <input id="email" type="text" #email>-
-  <input type="submit" value="Add" (click)="addUser(email.value)">
-</form>
-
+<div *ngIf="error">{{error}}</div>

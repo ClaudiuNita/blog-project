@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import { UserService } from './user.service';
-import { User } from './User';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +20,7 @@ export class AppComponent {
         if (event.constructor.name === "NavigationEnd") {
          this.userService.getUsername().subscribe(
           user => this.isLoggedIn = (user.info == 'user')? true:false 
-          );
+         );
         }
       })
    }

@@ -3,6 +3,7 @@ import { FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { User } from "../User";
 import { UserService } from "../user.service";
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-acasa',
@@ -16,7 +17,8 @@ export class AcasaComponent implements OnInit {
   error: any;
 
   constructor(private route: ActivatedRoute,
-              private userService: UserService) { }
+              private userService: UserService,
+              private appComponent: AppComponent) { }
 
   ngOnInit(): void {
   }
@@ -30,8 +32,12 @@ export class AcasaComponent implements OnInit {
        },
 
       err => {
-          console.log(err.error);
-          this.error = err.error.status;
+          console.log(err);
+          if(this.appComponent.isLoggedIn) {
+            this.error = err.statusText;
+          } else {
+            this.error = "User not logged in!";
+          }
           this.user = undefined;
       }
     );
