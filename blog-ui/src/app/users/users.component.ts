@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../User";
 import {UserService} from "../user.service";
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-users',
@@ -11,8 +12,11 @@ export class UsersComponent implements OnInit {
 
   users: User[] = [];
   error: any;
+  isAdmin = this.appComponent.isAdmin;
+  isLoggedIn = this.appComponent.isLoggedIn;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private appComponent: AppComponent) { }
 
   ngOnInit(): void {
     this.getUsers()

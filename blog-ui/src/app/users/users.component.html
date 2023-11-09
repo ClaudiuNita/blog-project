@@ -2,7 +2,7 @@
 
 <p>User database contents!</p>
 
-<table *ngIf="!error">
+<table *ngIf="isLoggedIn">
   <tr>
     <th>Id</th>
     <th>Email</th>
@@ -14,8 +14,8 @@
       <input type="text" [(ngModel)]="user.email">
     </td>
     <td>
-      <button (click)="updateUser(user.id, user.email)">Update</button>
-      <button (click)="deleteUser(user.id)">Delete</button>
+      <button [disabled]="!isAdmin" (click)="updateUser(user.id, user.email)">Update</button>
+      <button [disabled]="!isAdmin" (click)="deleteUser(user.id)">Delete</button>
     </td>
   </tr>
   <tr>
@@ -28,7 +28,7 @@
       </form>
     </td>
     <td>
-      <input id="submit" type="submit" value="Add" (click)="addUser(email.value)">
+      <input [disabled]="!isAdmin" id="submit" type="submit" value="Add" (click)="addUser(email.value)">
     </td>
   </tr>
 </table>

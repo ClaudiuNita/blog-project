@@ -20,6 +20,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> {
                                 requests
                                         .antMatchers("/blog/username").permitAll()
+                                        .antMatchers("/blog/user").hasRole("ADMIN")
                                         .anyRequest().authenticated();
                                 }
                 )
@@ -36,12 +37,18 @@ public class WebSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user =
+        UserDetails[] user = {
                 User.withDefaultPasswordEncoder()
                         .username("user")
                         .password("user")
                         .roles("USER")
-                        .build();
+                        .build(),
+                User.withDefaultPasswordEncoder()
+                        .username("admin")
+                        .password("admin")
+                        .roles("ADMIN")
+                        .build()
+                    };
 
         return new InMemoryUserDetailsManager(user);
     }

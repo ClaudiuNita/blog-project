@@ -11,19 +11,20 @@ export class AppComponent {
   title = 'blog';
 
   isLoggedIn = false;
+  isAdmin = false;
 
-  constructor(private router: Router, private userService: UserService) {
-  }
+  constructor(private router: Router, 
+              private userService: UserService) {}
 
-   ngOnInit() {
-      this.router.events.subscribe(event => {
-        if (event.constructor.name === "NavigationEnd") {
-         this.userService.getUsername().subscribe(
-          user => this.isLoggedIn = (user.info == 'user')? true:false 
-         );
+  ngOnInit() {
+    this.userService.getUsername().subscribe(
+      user => 
+        {                
+          this.isLoggedIn = (user.info !== 'null')? true:false;
+          this.isAdmin = (user.info === 'admin')? true:false; 
         }
-      })
-   }
+    );
+  }
 
   goAcasa(){
     this.router.navigate(['/acasa']);
