@@ -23,16 +23,6 @@ public class BlogPost {
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<PostComment> comments;
 
-//    private LocalDate dateCreated;
-
-
-
-
-
-
-
-
-
     //--------------------------------------------------------
 
     public Long getId() {

@@ -14,10 +14,6 @@ public class User {
     private String emailAddress;
     private String password;
 
-//    @ManyToOne
-//    @JoinColumn(name = "role")
-//    private Role role;
-
     @Transient
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private UserDetails userDetails;
@@ -33,44 +29,6 @@ public class User {
     public User(String email) {
         this.emailAddress = email;
     }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-//    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "USERS_ROLES",
-            joinColumns = @JoinColumn(name = "USERS_ID", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "ROLES_ID", referencedColumnName = "id")
-    )
-    private List<Role> roles;
-
-    public void addRole(Role role) {
-
-        roles.add(role);
-    }
-
-
-
-    //not saved in the database
-    @Transient
-    private int numberOfLatestPosts;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //-----------------------------------------------------------------
     public User() {
@@ -113,14 +71,4 @@ public class User {
     public void setBlogPosts(List<BlogPost> blogPosts) {
         this.blogPosts = blogPosts;
     }
-
-    public int getNumberOfLatestPosts() {
-        return numberOfLatestPosts;
-    }
-
-    public void setNumberOfLatestPosts(int numberOfLatestPosts) {
-        this.numberOfLatestPosts = numberOfLatestPosts;
-    }
-
-
 }

@@ -11,7 +11,7 @@ public class UserDetails {
     private Long id;
 
     private int age;
-
+    
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
 

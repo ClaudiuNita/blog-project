@@ -1,10 +1,8 @@
 package com.example.blogapi.service;
 
 import com.example.blogapi.DTO.UserDTO;
-import com.example.blogapi.model.Role;
 import com.example.blogapi.model.User;
 import com.example.blogapi.model.UserDetails;
-import com.example.blogapi.repository.RoleRepository;
 import com.example.blogapi.repository.UserDetailsRepository;
 import com.example.blogapi.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -22,25 +19,7 @@ public class BlogService {
     @Resource
     private UserRepository userRepository;
     @Resource
-    private RoleRepository roleRepository;
-
-    public List<User> addElementsInUserRoleTable(){
-
-        Optional<User> userOptional = userRepository.findById(1L);
-        Optional<Role> roleOptional = roleRepository.findById(1L);
-
-        if(userOptional.isPresent() && roleOptional.isPresent()){
-
-            User user = userOptional.get();
-            Role role = roleOptional.get();
-
-            role.addUser(user);
-
-            roleRepository.save(role);
-        }
-
-        return roleOptional.get().getUsers();
-    }
+    private UserDetailsRepository userDetailsRepository;
 
     public List<UserDTO> getAllUsers(){
 
@@ -75,9 +54,6 @@ public class BlogService {
         user.setEmailAddress(email);
         return userRepository.saveAndFlush(user);
     }
-
-    @Resource
-    private UserDetailsRepository userDetailsRepository;
 
     public void deleteUserById(Long id){
 

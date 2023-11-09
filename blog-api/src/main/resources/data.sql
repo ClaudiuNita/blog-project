@@ -1,5 +1,3 @@
-INSERT INTO ROLE VALUES (1, 'normal');
-INSERT INTO ROLE VALUES (2, 'avansat');
 INSERT INTO USERS VALUES (default ,'claudiu@tremend.com', 'ccc');
 INSERT INTO USERS VALUES (default ,'maria@tremend.com', 'ccc');
 INSERT INTO USERS VALUES (default, 'dragos@tremend.com', 'ccc');
