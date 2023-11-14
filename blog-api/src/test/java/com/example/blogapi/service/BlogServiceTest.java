@@ -21,7 +21,7 @@ public class BlogServiceTest {
     UserRepository userRepository;
 
     @InjectMocks
-    BlogService blogService;
+    UserService blogService;
 
 
     @Test

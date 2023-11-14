@@ -1,11 +1,12 @@
 package com.example.blogapi.model;
 
 import javax.persistence.*;
+
 import java.util.List;
 
 @Entity
-@Table(name = "BLOG_POST")
-public class BlogPost {
+@Table(name = "POST")
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +18,7 @@ public class BlogPost {
     @Column(name = "CONTENT")
     private String content;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
@@ -49,8 +50,8 @@ public class BlogPost {
         this.content = content;
     }
 
-    public User getAuthor() {
-        return author;
+    public Long getAuthor() {
+        return author.getId();
     }
 
     public void setAuthor(User author) {

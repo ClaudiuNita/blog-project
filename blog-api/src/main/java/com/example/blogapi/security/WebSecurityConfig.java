@@ -36,7 +36,7 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
+    public UserDetailsService userSecurityDetailsService() {
         UserDetails[] user = {
                 User.withDefaultPasswordEncoder()
                         .username("user")

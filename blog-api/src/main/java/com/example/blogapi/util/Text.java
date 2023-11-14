@@ -1,4 +1,4 @@
-package com.example.blogapi.model;
+package com.example.blogapi.util;
 
 public class Text {
     private String info;

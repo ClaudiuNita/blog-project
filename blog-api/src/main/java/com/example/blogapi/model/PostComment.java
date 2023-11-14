@@ -11,5 +11,5 @@ public class PostComment {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private BlogPost post;
+    private Post post;
 }

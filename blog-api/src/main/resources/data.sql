@@ -1,8 +1,11 @@
-INSERT INTO USERS VALUES (default ,'claudiu@tremend.com', 'ccc');
-INSERT INTO USERS VALUES (default ,'maria@tremend.com', 'ccc');
+INSERT INTO USERS VALUES (default, 'claudiu@tremend.com', 'ccc');
+INSERT INTO USERS VALUES (default, 'maria@tremend.com', 'ccc');
 INSERT INTO USERS VALUES (default, 'dragos@tremend.com', 'ccc');
-INSERT INTO USER_DETAILS VALUES (1, 19, 1);
-INSERT INTO BLOG_POST VALUES (1, 'content', 'title', 1);
-INSERT INTO BLOG_POST VALUES (2, 'contentt', 'titlee', 1);
+INSERT INTO USERS VALUES (default, 'dragos@tremend.com', 'ccc');
+INSERT INTO USER_DETAILS (id, username, email, password, age, gender, country, user_id) VALUES (1, ' ', ' ', ' ', 19, ' ', ' ', 1);
+INSERT INTO USER_DETAILS (id, username, email, password, age, gender, country, user_id) VALUES (2, ' ', ' ', ' ', 19, ' ', ' ', 2);
+INSERT INTO USER_DETAILS (id, username, email, password, age, gender, country, user_id) VALUES (3, ' ', ' ', ' ', 19, ' ', ' ', 3);
+INSERT INTO POST VALUES (1, 'content', 'title', 1);
+INSERT INTO POST VALUES (2, 'contentt', 'titlee', 1);
 INSERT INTO POST_COMMENT VALUES (1, 1);
 INSERT INTO POST_COMMENT VALUES (2, 2);

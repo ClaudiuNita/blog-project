@@ -14,7 +14,7 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class BlogService {
+public class UserService {
 
     @Resource
     private UserRepository userRepository;

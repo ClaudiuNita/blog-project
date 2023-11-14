@@ -1,7 +1,8 @@
 package com.example.blogapi.controller;
 
-import com.example.blogapi.model.Text;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.blogapi.util.Text;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;

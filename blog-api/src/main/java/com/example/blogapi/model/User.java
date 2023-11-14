@@ -14,24 +14,23 @@ public class User {
     private String emailAddress;
     private String password;
 
-    @Transient
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY, optional = false)
     private UserDetails userDetails;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
-    private List<BlogPost> blogPosts;
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Post> posts;
 
-    public User(String email, String password) {
-        this.emailAddress = email;
-        this.password = password;
+    public User() {
     }
 
     public User(String email) {
         this.emailAddress = email;
     }
 
-    //-----------------------------------------------------------------
-    public User() {
+    public User(String email, String password) {
+        this.emailAddress = email;
+        this.password = password;
     }
 
     public User(Long id, String emailAddress, String password) {
@@ -64,11 +63,11 @@ public class User {
         this.password = password;
     }
 
-    public List<BlogPost> getBlogPosts() {
-        return blogPosts;
+    public List<Post> getPosts() {
+        return posts;
     }
 
-    public void setBlogPosts(List<BlogPost> blogPosts) {
-        this.blogPosts = blogPosts;
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
