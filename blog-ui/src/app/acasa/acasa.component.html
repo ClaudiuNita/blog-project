@@ -14,10 +14,12 @@
     <tr>
       <th>Id</th>
       <th>Email</th>
+      <th>Actions</th>
     </tr>
     <tr>
       <td>{{user.id}}</td>
       <td>{{user.email}}</td>
+      <td><button style="width: 100%;" routerLink="/user-details/{{user.id}}">View</button></td>
     </tr>
   </table>
 </div>

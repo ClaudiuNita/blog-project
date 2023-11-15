@@ -8,13 +8,15 @@ import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BlogPostsComponent } from './blog-posts/blog-posts.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AcasaComponent,
     UsersComponent,
-    BlogPostsComponent
+    BlogPostsComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

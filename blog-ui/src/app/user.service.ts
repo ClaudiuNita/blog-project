@@ -3,6 +3,7 @@ import {User} from "./User";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { Text } from './Text';
+import { UserDetails } from './UserDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class UserService {
   private baseUrl = '/blog';
   private usersUrl = `${this.baseUrl}/users`;
   private userUrl = `${this.baseUrl}/user`;
+  private userDetailsUrl = `${this.baseUrl}/user-details`;
   private usernameUrl = `${this.baseUrl}/username`;
 
   constructor(private http: HttpClient) { }
@@ -23,6 +25,11 @@ export class UserService {
   getUser(id: bigint): Observable<User>{
     const url = `${this.usersUrl}/${id}`;
     return this.http.get<User>(url);
+  }
+
+  getUserDetails(id: number): Observable<UserDetails>{
+    const url = `${this.userDetailsUrl}/${id}`;
+    return this.http.get<UserDetails>(url);
   }
 
   addUser(mail: string): Observable<any>{
