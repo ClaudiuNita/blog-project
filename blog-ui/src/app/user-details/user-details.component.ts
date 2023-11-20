@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserDetails } from '../UserDetails';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-user-details',
@@ -11,10 +12,12 @@ import { ActivatedRoute } from '@angular/router';
 export class UserDetailsComponent implements OnInit {
 
   userDetails: UserDetails | undefined;
+  isAdmin = this.appComponent.isAdmin;
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private appComponent: AppComponent
   ) { }
 
   ngOnInit(): void {
@@ -25,5 +28,11 @@ export class UserDetailsComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!);
     this.userService.getUserDetails(id)
       .subscribe(userD => this.userDetails = userD);
+  }
+
+  updateUserDetails(): void {
+    if(this.userDetails)
+      this.userService.updateUserDetails(this.userDetails)
+        .subscribe(() => window.location.reload())
   }
 }

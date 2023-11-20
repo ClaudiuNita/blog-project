@@ -42,5 +42,4 @@ export class AcasaComponent implements OnInit {
       }
     );
   }
-
 }

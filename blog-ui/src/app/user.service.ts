@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {User} from "./User";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { User } from "./User";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 import { Text } from './Text';
 import { UserDetails } from './UserDetails';
 
@@ -32,8 +32,12 @@ export class UserService {
     return this.http.get<UserDetails>(url);
   }
 
-  addUser(mail: string): Observable<any>{
-    return this.http.post(this.userUrl, mail);
+  updateUserDetails(userDetails: UserDetails): Observable<UserDetails>{
+    return this.http.put<UserDetails>(this.userDetailsUrl, userDetails);
+  } 
+
+  addUser(email: string): Observable<any>{
+    return this.http.post(this.userUrl, email);
   }
 
   updateUser(id: bigint, email: string) {

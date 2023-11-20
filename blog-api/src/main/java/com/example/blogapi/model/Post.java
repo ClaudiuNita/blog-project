@@ -24,8 +24,6 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<PostComment> comments;
 
-    //--------------------------------------------------------
-
     public Long getId() {
         return id;
     }

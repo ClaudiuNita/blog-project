@@ -45,26 +45,27 @@ public class UserService {
 
     public void addUser(String email){
 
-        userRepository.save(new User(email));
+        User user = new User(email);
+        UserDetails userDetails = new UserDetails(email);
+
+        userDetails.setUser(user);
+        user.setUserDetails(userDetails);
+
+        userRepository.save(user);
     }
 
-    public User updateUserById(Long id, String email){
+    public void updateUserById(Long id, String email){
 
-        User user = userRepository.getById(id);
+        User user = userRepository.getReferenceById(id);
         user.setEmailAddress(email);
-        return userRepository.saveAndFlush(user);
+
+        UserDetails userDetails = user.getUserDetails();
+        userDetails.setEmail(email);
+
+        userRepository.saveAndFlush(user);
     }
 
     public void deleteUserById(Long id){
-
-        for (Long i = 1L; i<= userDetailsRepository.count(); i++){
-            UserDetails userDetails = userDetailsRepository.getById(i);
-
-            if(userDetails.getUser().getId() == id){
-                userDetailsRepository.deleteById(id);
-                break;
-            }
-        }
 
         userRepository.deleteById(id);
     }

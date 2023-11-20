@@ -5,6 +5,7 @@
     <table>
         <th>Field</th>
         <th>Input</th>
+
         <tr>
             <td>
                 <label for="username">Username: </label>
@@ -63,4 +64,6 @@
             </td>
         </tr>
     </table>
+
+    <div style="display: flex; justify-content: end; padding: 10px;"><button [disabled]="!isAdmin" (click)="updateUserDetails()">Update</button></div>
 </div>

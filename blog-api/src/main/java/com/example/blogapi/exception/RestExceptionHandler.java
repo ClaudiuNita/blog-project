@@ -20,7 +20,6 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-
     protected ResponseEntity<Object> handleMessage (HttpMessageNotReadableException ex){
 
         return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, ex));

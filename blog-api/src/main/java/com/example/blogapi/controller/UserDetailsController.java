@@ -5,10 +5,12 @@ import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.blogapi.model.UserDetails;
+import com.example.blogapi.DTO.UserDetailsDTO;
 import com.example.blogapi.service.UserDetailsService;
 
 @RestController
@@ -20,9 +22,15 @@ public class UserDetailsController {
     private UserDetailsService userDetailsService;
 
     @GetMapping("/user-details/{id}")
-    public UserDetails getUserDetailsById(@PathVariable Long id) {
+    public UserDetailsDTO getUserDetailsById(@PathVariable Long id) {
         
         return userDetailsService.getUserDetailsById(id);
+    }
+
+    @PutMapping("/user-details")
+    public void updateUserDetails(@RequestBody UserDetailsDTO userDetailsDTO) {
+
+        userDetailsService.updateUserDetails(userDetailsDTO);
     }
 
 }

@@ -1,31 +1,24 @@
-package com.example.blogapi.model;
+package com.example.blogapi.DTO;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "USER_DETAILS")
-public class UserDetails {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserDetailsDTO {
+    
     private Long id;
-
     private String username;
     private String email;
     private String password;
     private int age;
     private String gender;
     private String country;
-    
-    @OneToOne()
-    @JoinColumn(name = "user_id")
-    private User user;
 
-    public UserDetails() {
-    }
-
-    public UserDetails(String email) {
+    public UserDetailsDTO(Long id, String username, String email, String password, int age, String gender,
+            String country) {
+        this.id = id;
+        this.username = username;
         this.email = email;
+        this.password = password;
+        this.age = age;
+        this.gender = gender;
+        this.country = country;
     }
 
     public Long getId() {
@@ -34,14 +27,6 @@ public class UserDetails {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getUsername() {
@@ -67,7 +52,13 @@ public class UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+    public int getAge() {
+        return age;
+    }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
     public String getGender() {
         return gender;
     }
@@ -75,20 +66,11 @@ public class UserDetails {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
+    
     public String getCountry() {
         return country;
     }
-
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
