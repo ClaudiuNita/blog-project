@@ -116,9 +116,22 @@ a:hover {
 
 /* THIS IS THE BEGINING CSS */
 
-.blog-nav {
+.nav-content {
+  display: flex;
   position: fixed;
   top: 10%;
+  width: 100%;
+}
+
+.blog-nav {
+  position: fixed;
+  left: 44%;
+}
+
+.login-nav {
+  margin-left: auto;
+  position: fixed;
+  right: 22%;
 }
 
 nav {

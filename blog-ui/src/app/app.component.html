@@ -32,17 +32,20 @@
   </div>
 
   <!--  MY CONTENT-->
-  <div class="blog-nav">
-    <nav>
-      <a routerLink="/acasa" routerLinkActive="active-link">Acasa</a>
-      <a routerLink="/blogposts" routerLinkActive="active-link">Blog Posts</a>
-      <a routerLink="/users" routerLinkActive="active-link">Users</a>
-      <a href="http://localhost:8090/login" *ngIf="!isLoggedIn">Login</a>
-      <a href="http://localhost:8090/logout" *ngIf="isLoggedIn">Logout</a>
-      <a href="http://localhost:8090/h2-console/" target="_blank" *ngIf="isAdmin">H2-Console</a>
-    </nav>
+  <div class="nav-content">
+      <nav class="blog-nav">
+        <a routerLink="/acasa" routerLinkActive="active-link">Acasa</a>
+        <a routerLink="/blogposts" routerLinkActive="active-link">Blog Posts</a>
+        <a routerLink="/users" routerLinkActive="active-link">Users</a>
+      </nav>
+    
+      <nav class="login-nav">
+        <a href="http://localhost:8090/h2-console/" target="_blank" *ngIf="isAdmin">H2-Console</a>
+        <a href="http://localhost:8090/login" *ngIf="!isLoggedIn">Login</a>
+        <a href="http://localhost:8090/logout" *ngIf="isLoggedIn">Logout</a>
+      </nav>
   </div>
-  
+
   <router-outlet></router-outlet>
 
 </div>
