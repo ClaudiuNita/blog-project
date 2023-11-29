@@ -1,6 +1,13 @@
 .alert {
-    color: #a94442;
-}
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid;
+    border-radius: 4px;
+    width: 70%;
+  }
 
 .ng-valid[required], .ng-valid.required  {
     border-left: 5px solid #42A948; /* green */
@@ -23,4 +30,9 @@ label {
 
 button {
     margin-top: 10px;
+}
+
+input {
+    padding: 8px;
+    width: 70%;
 }
