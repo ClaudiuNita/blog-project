@@ -1,0 +1,29 @@
+<h1>Register to BlogApp</h1>
+<div>
+    <form (ngSubmit)="registerUser()" #registerUserForm="ngForm">
+    
+        <div class="register-input">
+            <label for="username">Username:</label>
+            <input type="text" required [(ngModel)]="user.username" id="username" name="username" #username="ngModel" placeholder="Username">
+            <div [hidden]="username.valid || username.pristine" class="alert">
+                Username is required!
+            </div>
+        </div>
+        <div class="register-input">
+            <label for="email">Email:</label>
+            <input type="email" pattern=".+@" required [(ngModel)]="user.email" id="email" name="email" #email="ngModel" placeholder="Email">
+            <div [hidden]="email.valid || email.pristine" class="alert">
+                A valid email is required!
+            </div>
+        </div>
+        <div class="register-input">
+            <label for="password">Password:</label>
+            <input type="password" required [(ngModel)]="user.password" id="password" name="password" #password="ngModel" placeholder="Password">
+            <div [hidden]="password.valid || password.pristine" class="alert">
+                Password is required!
+            </div>
+        </div>
+        <button type="submit" [disabled]="!registerUserForm.form.valid">Submit</button>
+        
+    </form>
+</div>

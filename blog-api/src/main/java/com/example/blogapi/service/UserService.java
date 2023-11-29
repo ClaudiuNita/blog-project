@@ -21,14 +21,14 @@ public class UserService {
     @Resource
     private UserDetailsRepository userDetailsRepository;
 
-    public List<UserDTO> getAllUsers(){
+    public List<UserDTO> getAllUsers() {
 
         List<User> users = new ArrayList<>(userRepository.findAll());
         List<UserDTO> usersDTO = new ArrayList<>();
         for (User user:users) {
             UserDTO userDTO = new UserDTO();
             userDTO.setId(user.getId());
-            userDTO.setEmail(user.getEmailAddress());
+            userDTO.setEmail(user.getEmail());
             userDTO.setPassword(user.getPassword());
 
             usersDTO.add(userDTO);
@@ -36,14 +36,14 @@ public class UserService {
         return usersDTO;
     }
 
-    public UserDTO getUserById(Long id){
+    public UserDTO getUserById(Long id) {
 
             User user = userRepository.findById(id).get();
 
-            return new UserDTO(user.getId(), user.getEmailAddress(), user.getPassword());
+            return new UserDTO(user.getId(), user.getEmail(), user.getPassword());
     }
 
-    public void addUser(String email){
+    public void addUserByEmail(String email) {
 
         User user = new User(email);
         UserDetails userDetails = new UserDetails(email);
@@ -54,10 +54,20 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void updateUserById(Long id, String email){
+    public void addUser(UserDTO userDTO) {
+        User user = new User(userDTO.getUsername(), userDTO.getEmail(), userDTO.getPassword());
+        UserDetails userDetails = new UserDetails(userDTO.getUsername(), userDTO.getEmail(), userDTO.getPassword());
+
+        userDetails.setUser(user);
+        user.setUserDetails(userDetails);
+
+        userRepository.save(user);
+    }
+
+    public void updateUserById(Long id, String email) {
 
         User user = userRepository.getReferenceById(id);
-        user.setEmailAddress(email);
+        user.setEmail(email);
 
         UserDetails userDetails = user.getUserDetails();
         userDetails.setEmail(email);
@@ -65,7 +75,7 @@ public class UserService {
         userRepository.saveAndFlush(user);
     }
 
-    public void deleteUserById(Long id){
+    public void deleteUserById(Long id) {
 
         userRepository.deleteById(id);
     }

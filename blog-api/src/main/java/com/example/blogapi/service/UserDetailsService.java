@@ -34,7 +34,7 @@ public class UserDetailsService {
         userDetailsToUpdate.setUsername(userDetailsDTO.getUsername());
 
         User userToUpdate = userDetailsToUpdate.getUser();
-        userToUpdate.setEmailAddress(userDetailsDTO.getEmail());
+        userToUpdate.setEmail(userDetailsDTO.getEmail());
         userToUpdate.setPassword(userDetailsDTO.getPassword());
 
         userDetailsRepository.saveAndFlush(userDetailsToUpdate);

@@ -30,7 +30,7 @@ export class UsersComponent implements OnInit {
   }
 
   addUser(email: string): void {
-    this.userService.addUser(email).subscribe(
+    this.userService.addUserByEmail(email).subscribe(
       () => window.location.reload()
     );
   }

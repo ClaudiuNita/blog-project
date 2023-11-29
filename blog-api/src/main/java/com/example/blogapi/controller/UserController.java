@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public List<UserDTO> getAllUsers(){
+    public List<UserDTO> getAllUsers() {
 
         return userService.getAllUsers();
     }
@@ -32,19 +32,25 @@ public class UserController {
     }
 
     @PostMapping ("/user")
-    public void addUser(@RequestBody String email){
+    public void addUserByEmail(@RequestBody String email) {
 
-        userService.addUser(email);
+        userService.addUserByEmail(email);
+    }
+
+    @PostMapping ("/new-user")
+    public void addUser(@RequestBody UserDTO user) {
+
+        userService.addUser(user);
     }
 
     @PutMapping("/user")
-    public void updateUser(@RequestBody UserDTO user){
+    public void updateUser(@RequestBody UserDTO user) {
 
         userService.updateUserById(user.getId(), user.getEmail());
     }
 
     @DeleteMapping("/user")
-    public void deleteUser(@RequestBody Long id){
+    public void deleteUser(@RequestBody Long id) {
 
         userService.deleteUserById(id);
     }

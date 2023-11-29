@@ -43,6 +43,7 @@
         <a href="http://localhost:8090/h2-console/" target="_blank" *ngIf="isAdmin">H2-Console</a>
         <a href="http://localhost:8090/login" *ngIf="!isLoggedIn">Login</a>
         <a href="http://localhost:8090/logout" *ngIf="isLoggedIn">Logout</a>
+        <a routerLink="/register" routerLinkActive="active-link" *ngIf="!isLoggedIn">Register</a>
       </nav>
   </div>
 

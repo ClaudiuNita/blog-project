@@ -31,8 +31,8 @@ public class BlogServiceTest {
         User user0 = new User();
         User user1 = new User();
 
-        user0.setEmailAddress("salut0");
-        user1.setEmailAddress("salut1");
+        user0.setEmail("salut0");
+        user1.setEmail("salut1");
 
         List<User> users = Arrays.asList(user0, user1);
 
@@ -52,7 +52,7 @@ public class BlogServiceTest {
 
         User user = new User();
         user.setId(1L);
-        user.setEmailAddress("claudiu@tremend.com");
+        user.setEmail("claudiu@tremend.com");
 
         Optional<User> userOptional = Optional.of(user);
 
