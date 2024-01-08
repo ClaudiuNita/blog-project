@@ -118,19 +118,19 @@ a:hover {
 
 .nav-content {
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 10%;
   width: 100%;
 }
 
 .blog-nav {
-  position: fixed;
+  position: absolute;
   left: 44%;
 }
 
 .login-nav {
   margin-left: auto;
-  position: fixed;
+  position: absolute;
   right: 22%;
 }
 

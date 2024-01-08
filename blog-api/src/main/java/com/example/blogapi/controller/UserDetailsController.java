@@ -32,5 +32,4 @@ public class UserDetailsController {
 
         userDetailsService.updateUserDetails(userDetailsDTO);
     }
-
 }

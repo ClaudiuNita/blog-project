@@ -26,6 +26,7 @@ public class WebSecurityConfig {
                                 requests
                                         .antMatchers("/blog/username").permitAll()
                                         .antMatchers("/blog/new-user").permitAll()
+                                        .antMatchers("/blog/posts").permitAll()
                                         .antMatchers("/blog/user").hasAuthority("ADMIN")
                                         .antMatchers("/blog/user-details").hasAuthority("ADMIN")
                                         .anyRequest().authenticated();

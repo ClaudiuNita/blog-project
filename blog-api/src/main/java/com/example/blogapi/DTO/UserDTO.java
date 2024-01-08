@@ -10,6 +10,11 @@ public class UserDTO {
     public UserDTO() {
     }
 
+    public UserDTO(Long id, String username) {
+        this.id = id;
+        this.username = username;
+    }
+
     public UserDTO(Long id, String email, String password) {
         this.id = id;
         this.email = email;

@@ -2,6 +2,7 @@ package com.example.blogapi.model;
 
 import javax.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -18,11 +19,23 @@ public class Post {
     @Column(name = "CONTENT")
     private String content;
 
+    @Column(name = "LOCALDATETIME")
+    private LocalDateTime localDateTime;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<PostComment> comments;
+
+    public Post() {
+        localDateTime = localDateTime.now();
+    }
+
+    public Post(String content) {
+        this.content = content;
+        localDateTime = localDateTime.now();
+    }
 
     public Long getId() {
         return id;
@@ -48,8 +61,16 @@ public class Post {
         this.content = content;
     }
 
-    public Long getAuthor() {
-        return author.getId();
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
+    }
+
+    public User getAuthor() {
+        return this.author;
     }
 
     public void setAuthor(User author) {

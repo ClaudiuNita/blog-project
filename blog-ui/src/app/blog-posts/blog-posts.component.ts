@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../Post';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-blog-posts',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogPostsComponent implements OnInit {
 
-  constructor() { }
+  posts: Post[] = [];
+  username: string = '';
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getPosts();
+    this.getUsername();
   }
 
+  getPosts(): void {
+    this.userService.getPosts().subscribe(
+      posts => this.posts = posts
+    );
+    this.posts
+  }
+
+  getUsername() {
+    this.userService.getUsername().subscribe(
+      user => this.username = user.info
+    );
+  }
+
+  savePost(content: string): void {
+    this.userService.savePost(content, this.username).subscribe(
+      () => window.location.reload()
+    );
+  }
 }

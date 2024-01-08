@@ -4,7 +4,7 @@ INSERT INTO USERS (id, username, email, password) VALUES (default, 'dragos', 'dr
 INSERT INTO USER_DETAILS (id, username, email, password, age, gender, country, user_id) VALUES (default, 'claudiu', 'claudiu@tremend.com', 'ccc', 19, 'male', 'Romania', 1);
 INSERT INTO USER_DETAILS (id, username, email, password, age, gender, country, user_id) VALUES (default, 'maria', 'maria@tremend.com', 'ccc', 19, 'female', 'Romania', 2);
 INSERT INTO USER_DETAILS (id, username, email, password, age, gender, country, user_id) VALUES (default, 'dragos', 'dragos@tremend.com', 'ccc', 19, 'male', 'Germania', 3);
-INSERT INTO POST VALUES (default, 'content', 'title', 1);
-INSERT INTO POST VALUES (default, 'contentt', 'titlee', 1);
+INSERT INTO POST (id, title, content, localDateTime, author_id) VALUES (default, 'titlee', 'contentt', '2018-11-15T08:22:12', 1);
+INSERT INTO POST (id, title, content, localDateTime, author_id) VALUES (default, 'title', 'content', '2017-11-15T08:22:12', 1);
 INSERT INTO POST_COMMENT VALUES (default, 1);
 INSERT INTO POST_COMMENT VALUES (default, 2);

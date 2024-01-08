@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Text } from './Text';
 import { UserDetails } from './UserDetails';
+import { Post } from './Post';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl);
+  }
+
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.baseUrl + '/posts');
   }
 
   getUser(id: bigint): Observable<User> {
@@ -43,6 +48,10 @@ export class UserService {
 
   addUserByEmail(email: string): Observable<any> {
     return this.http.post(this.userUrl, email);
+  }
+
+  savePost(content: string, username: string): Observable<any> {
+    return this.http.post(this.baseUrl + '/post', {content, username});
   }
 
   updateUser(id: bigint, email: string) {
