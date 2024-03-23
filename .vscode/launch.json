@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "blog-api",
+            "request": "launch",
+            "mainClass": "com.example.blogapi.BlogApi",
+            "projectName": "HibernateBlog"
+        },
+        {
+            "type": "node-terminal",
+            "name": "blog-ui",
+            "request": "launch",
+            "command": "npm run start",
+            "cwd": "${workspaceFolder}\\blog-ui"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Compound",
+            "configurations": ["blog-api", "blog-ui"]
+        }
+    ]
+}

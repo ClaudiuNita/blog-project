@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
-import { User } from "../User";
-import { UserService } from "../user.service";
-import { AppComponent } from '../app.component';
+import { User } from 'src/app/models/User';
+import { UserService } from 'src/app/services/user.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-acasa',
