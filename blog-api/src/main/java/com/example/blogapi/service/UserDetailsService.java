@@ -23,6 +23,13 @@ public class UserDetailsService {
                 userDetails.getPassword(), userDetails.getAge(), userDetails.getGender(), userDetails.getCountry());
     }
 
+    public Integer getUserDetailsId(String username) {
+        
+        UserDetails userDetails = userDetailsRepository.findByUsername(username);
+
+        return (Integer) (int) (long) userDetails.getId();
+    }
+
     public void updateUserDetails(UserDetailsDTO userDetailsDTO) {
         
         UserDetails userDetailsToUpdate = userDetailsRepository.findById(userDetailsDTO.getId()).get();

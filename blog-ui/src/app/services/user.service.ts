@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Text } from '../models/Text';
 import { UserDetails } from '../models/UserDetails';
@@ -36,6 +36,11 @@ export class UserService {
   getUserDetails(id: number): Observable<UserDetails> {
     const url = `${this.userDetailsUrl}/${id}`;
     return this.http.get<UserDetails>(url);
+  }
+
+  getUserDetailsId(username: string): Observable<number> {
+    let params = new HttpParams().set('username', username);
+    return this.http.get<number>(this.userDetailsUrl, {params: params});
   }
 
   updateUserDetails(userDetails: UserDetails): Observable<UserDetails> {

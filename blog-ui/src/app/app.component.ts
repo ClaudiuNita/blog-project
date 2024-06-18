@@ -12,6 +12,7 @@ export class AppComponent {
 
   isLoggedIn = false;
   isAdmin = false;
+  currentUserDetailsId = 0;
 
   constructor(private router: Router, 
               private userService: UserService) {}
@@ -22,6 +23,9 @@ export class AppComponent {
         {                
           this.isLoggedIn = (user.info !== 'null')? true:false;
           this.isAdmin = (user.info === 'admin')? true:false; 
+          this.userService.getUserDetailsId(user.info).subscribe(
+              currentUserDetailsId => this.currentUserDetailsId = currentUserDetailsId
+          );
         }
     );
   }

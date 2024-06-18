@@ -13,6 +13,7 @@ export class UserDetailsComponent implements OnInit {
 
   userDetails: UserDetails | undefined;
   isAdmin = this.appComponent.isAdmin;
+  currentUserDetailsId = BigInt(this.appComponent.currentUserDetailsId);
 
   constructor(
     private userService: UserService,
