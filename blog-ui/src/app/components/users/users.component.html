@@ -1,4 +1,30 @@
-<p>User database contents:</p>
+<p>Request data from database:</p>
+
+<form action="/{userId}">
+  <label><b>User Id: </b></label>
+  <input type="text" name="userId" [formControl]="form">
+  <input type="submit" value="Search" (click)="getUser()">
+</form>
+
+<div *ngIf="user">
+  <p>Rezultat:</p>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td>{{user.id}}</td>
+      <td>{{user.email}}</td>
+      <td><button style="width: 100%;" routerLink="/user-details/{{user.id}}">View</button></td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="error" class="alert">{{error}}</div>
+
+<p *ngIf="isLoggedIn">User database contents:</p>
 
 <table *ngIf="isLoggedIn">
   <tr>
@@ -33,5 +59,3 @@
     </td>
   </tr>
 </table>
-
-<div *ngIf="error" class="alert">{{error}}</div>

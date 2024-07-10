@@ -1,25 +1,14 @@
-<p>Request data from database:</p>
+<div *ngFor="let post of posts" class="posts">
+    <p>{{post.content}}</p>
 
-<form action="/{userId}">
-  <label><b>User Id: </b></label>
-  <input type="text" name="userId" [formControl]="form">
-  <input type="submit" value="Search" (click)="getUser()">
-</form>
-
-<div *ngIf="user">
-  <p>Rezultat:</p>
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Email</th>
-      <th>Actions</th>
-    </tr>
-    <tr>
-      <td>{{user.id}}</td>
-      <td>{{user.email}}</td>
-      <td><button style="width: 100%;" routerLink="/user-details/{{user.id}}">View</button></td>
-    </tr>
-  </table>
+    <div class="post-info">
+        <p>By <a routerLink="/user-details/{{post.author.id}}">{{post.author.username}}</a></p>
+        <p>
+            {{post.localDateTime | date: "HH:mm dd:MM:yyyy"}}
+        </p>
+    </div>
 </div>
 
-<div *ngIf="error" class="alert">{{error}}</div>
+<div class="posts">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>

@@ -1,13 +1,18 @@
-table, th, td{
-  border: 1px solid;
+.posts {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border-style: outset;
+    border-color: aliceblue;
+    border-width: 3px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
 }
 
-.alert {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-  padding: 12px;
-  margin-top: 15px;
-  border: 1px solid;
-  border-radius: 4px;
+.post-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: x-small;
+    font-style: italic;
 }

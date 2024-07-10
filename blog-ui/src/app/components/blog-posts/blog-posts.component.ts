@@ -15,7 +15,7 @@ export class BlogPostsComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getPosts();
+    // this.getPosts();
     this.getUsername();
   }
 

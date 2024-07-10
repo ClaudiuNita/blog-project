@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from "@angular/forms";
-import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
-import { AppComponent } from 'src/app/app.component';
+import { Post } from 'src/app/models/Post';
 
 @Component({
   selector: 'app-home',
@@ -11,32 +9,19 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class HomeComponent implements OnInit {
 
-  user?: User;
-  form = new FormControl('');
-  error: any;
+  posts: Post[] = [];
 
-  constructor(private userService: UserService,
-              private appComponent: AppComponent) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getPosts();
   }
-
-  getUser(): void {
-    // @ts-ignore
-    this.userService.getUser(this.form.value? this.form.value:null).subscribe(
-      user => {
-          this.user = user
-          this.error = ''
-       },
-
-      err => {
-          console.log(err);
-          if(this.appComponent.isLoggedIn) {
-            this.error = err.statusText;
-          } else {
-            this.error = "User not logged in!";
-          }
-          this.user = undefined;
+ 
+  getPosts(): void {
+    this.userService.getPosts().subscribe(
+      posts => {
+        this.posts = posts;
+        this.posts.sort((a, b) => new Date(b.localDateTime).getTime() - new Date(a.localDateTime).getTime());
       }
     );
   }
