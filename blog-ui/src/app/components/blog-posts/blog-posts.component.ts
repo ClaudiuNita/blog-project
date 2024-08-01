@@ -15,15 +15,15 @@ export class BlogPostsComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    // this.getPosts();
     this.getUsername();
+    this.getPosts();
   }
 
   getPosts(): void {
     this.userService.getPosts().subscribe(
       posts => {
-        this.posts = posts;
-        this.posts.sort((a, b) => new Date(b.localDateTime).getTime() - new Date(a.localDateTime).getTime());
+        posts.sort((a, b) => new Date(b.localDateTime).getTime() - new Date(a.localDateTime).getTime());
+        this.posts = posts.filter(post => post.author.username === this.username);
       }
     );
   }

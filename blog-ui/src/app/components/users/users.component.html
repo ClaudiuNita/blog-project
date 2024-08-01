@@ -2,18 +2,22 @@
 
 <form>
   <label><b>User Id: </b></label>
-  <input type="text" name="userId" [formControl]="form">
-  <input type="submit" value="Search" (click)="getUser()">
+  <div>
+    <input type="text" name="userId" [formControl]="form">
+    <input type="submit" value="Search" (click)="getUser()">
+  </div>
 </form>
 <form>
   <label><b>Username: </b></label>
-  <input type="text" name="userId" #username>
-  <input type="submit" value="Search" (click)="getUserByUsername(username.value)">
+  <div>
+    <input type="text" name="userId" #username>
+    <input type="submit" value="Search" (click)="getUserByUsername(username.value)">
+  </div>
 </form>
 
 <div *ngIf="user">
-  <button (click)="clearUser()">Clear</button>
   <p>Rezultat:</p>
+  <button style="margin-bottom: 5px;" (click)="clearUser()">Clear</button>
   <table>
     <tr>
       <th>Id</th>
