@@ -31,6 +31,12 @@ public class UserController {
         return userService.getUserById(Long.parseLong(id));
     }
 
+    @GetMapping("/user-username")
+    public UserDTO getUserByUsername(@RequestParam(value = "username") String username) {
+
+        return userService.getUserByUsername(username);
+    }
+
     @PostMapping ("/user")
     public void addUserByEmail(@RequestBody String email) {
 

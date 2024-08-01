@@ -7,10 +7,12 @@ import com.example.blogapi.repository.UserDetailsRepository;
 import com.example.blogapi.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException.NotFound;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Slf4j
 @Service
@@ -42,6 +44,20 @@ public class UserService {
 
             return new UserDTO(user.getId(), user.getEmail(), user.getPassword());
     }
+
+    public UserDTO getUserByUsername(String username) {
+
+        User user = userRepository.findByUsername(username);
+
+        if (username.replaceAll("[0-9]", "").isEmpty()) {
+            throw new NumberFormatException();
+        }
+        if (user == null) {
+            throw new NoSuchElementException();
+        }
+
+        return new UserDTO(user.getId(), user.getEmail(), user.getPassword());
+}
 
     public void addUserByEmail(String email) {
 

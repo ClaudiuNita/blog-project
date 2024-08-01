@@ -14,7 +14,7 @@ export class UsersComponent implements OnInit {
   users: User[] = [];
   user?: User;
   form = new FormControl('');
-  error: any;
+  error = '';
   isAdmin = this.appComponent.isAdmin;
   isLoggedIn = this.appComponent.isLoggedIn;
 
@@ -27,27 +27,49 @@ export class UsersComponent implements OnInit {
 
   getUsers(): void {
       this.userService.getUsers().subscribe(
-        users => {this.users = users;
-                  this.error = ''},
-        err => {this.error = 'User not logged in!'});
+        users => {
+          this.users = users;
+          this.error = ''
+        },
+
+        err => {
+          if (err.statusText == 'Not Found')
+            this.error = 'User not logged in!';
+          else 
+            this.error = err.statusText
+        }
+      );
   }
 
   getUser(): void {
     // @ts-ignore
-    this.userService.getUser(this.form.value? this.form.value:null).subscribe(
+    this.userService.getUser(this.form.value? this.form.value : null).subscribe(
       user => {
-          this.user = user
+          this.user = user;
           this.error = ''
-       },
+      },
 
       err => {
-          console.log(err);
-          if (this.appComponent.isLoggedIn) {
+          if (this.isLoggedIn) {
             this.error = err.statusText;
           } else {
             this.error = "User not logged in!";
           }
           this.user = undefined;
+      }
+    );
+  }
+
+  getUserByUsername(username: string): void {
+    this.userService.getUserByUsername(username).subscribe(
+      user => {
+        this.user = user;
+        this.error = ''
+      },
+
+      err => {
+        this.error = err.statusText;
+        this.user = undefined;
       }
     );
   }
@@ -68,5 +90,9 @@ export class UsersComponent implements OnInit {
     this.userService.deleteUser(id).subscribe(
       () => window.location.reload()
     );
+  }
+
+  clearUser() {
+    this.user = undefined;
   }
 }

@@ -1,12 +1,18 @@
 <p>Request data from database:</p>
 
-<form action="/{userId}">
+<form>
   <label><b>User Id: </b></label>
   <input type="text" name="userId" [formControl]="form">
   <input type="submit" value="Search" (click)="getUser()">
 </form>
+<form>
+  <label><b>Username: </b></label>
+  <input type="text" name="userId" #username>
+  <input type="submit" value="Search" (click)="getUserByUsername(username.value)">
+</form>
 
 <div *ngIf="user">
+  <button (click)="clearUser()">Clear</button>
   <p>Rezultat:</p>
   <table>
     <tr>

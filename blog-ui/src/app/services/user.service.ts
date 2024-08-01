@@ -33,6 +33,10 @@ export class UserService {
     return this.http.get<User>(url);
   }
 
+  getUserByUsername(username: string): Observable<User> {
+    return this.http.get<User>(`${this.userUrl}-username`, {params: {username}});
+  }
+
   getUserDetails(id: number): Observable<UserDetails> {
     const url = `${this.userDetailsUrl}/${id}`;
     return this.http.get<UserDetails>(url);
