@@ -1,11 +1,16 @@
 package com.example.blogapi.controller;
 
-import org.springframework.web.bind.annotation.*;
-
-import com.example.blogapi.util.Text;
+import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.blogapi.DTO.UserDTO;
 
 @RestController
 @RequestMapping(value = "/blog")
@@ -14,14 +19,13 @@ public class UsernameController {
 
     @RequestMapping(value = "/username", method = RequestMethod.GET)
     @ResponseBody
-    public Text getCurrentUsername(HttpServletRequest request) {
+    public UserDTO getCurrentUsername(HttpServletRequest request) {
 
         if(request.getUserPrincipal() != null) {
-
             Principal principal = request.getUserPrincipal();
-            return new Text(principal.getName());
+            return new UserDTO(principal.getName());
         } else {
-            return new Text("null");
+            return null;
         }
     }
 }

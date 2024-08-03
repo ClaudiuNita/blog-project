@@ -29,10 +29,8 @@ public class PostController {
     }
 
     @PostMapping("/post")
-    public void savePost(@RequestBody String body) {
+    public void savePost(@RequestBody PostDTO postReq) {
 
-        String content = body.split("\"")[3];
-        String username = body.split("\"")[7];
-        postService.savePost(content, username);
+        postService.savePost(postReq.getContent(), postReq.getAuthor().getUsername());
     }
 }

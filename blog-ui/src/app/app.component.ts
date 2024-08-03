@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from "@angular/router";
-import { UserService } from './services/user.service';
+import { UserService } from './services/user/user.service';
+import { UserDetailsService } from './services/userDetails/user-details.service';
 
 @Component({
   selector: 'app-root',
@@ -12,25 +13,31 @@ export class AppComponent {
 
   isLoggedIn = false;
   isAdmin = false;
+  currentUserUsername = ''
   currentUserDetailsId = 0;
 
   constructor(private router: Router, 
-              private userService: UserService) {}
+              private userService: UserService,
+              private userDetailsService: UserDetailsService) {}
 
   ngOnInit() {
     this.userService.getUsername().subscribe(
-      user => 
-        {                
-          this.isLoggedIn = (user.info !== 'null')? true:false;
-          this.isAdmin = (user.info === 'admin')? true:false; 
-          this.userService.getUserDetailsId(user.info).subscribe(
+      currentUser => 
+      { 
+        if (currentUser != null) {
+          this.currentUserUsername = currentUser.username; 
+          this.isLoggedIn = true;
+          this.isAdmin = (this.currentUserUsername === 'admin')? true : false; 
+          if (this.isLoggedIn && !this.isAdmin)
+            this.userDetailsService.getUserDetailsId(this.currentUserUsername).subscribe(
               currentUserDetailsId => this.currentUserDetailsId = currentUserDetailsId
-          );
-        }
+            );
+        }              
+      }
     );
   }
 
-  goAcasa(){
+  goAcasa() {
     this.router.navigate(['/acasa']);
   }
 }

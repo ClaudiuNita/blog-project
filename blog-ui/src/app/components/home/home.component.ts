@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/app/models/Post';
+import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +11,14 @@ export class HomeComponent implements OnInit {
 
   posts: Post[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor(private postService: PostService) { }
 
   ngOnInit(): void {
     this.getPosts();
   }
  
   getPosts(): void {
-    this.userService.getPosts().subscribe(
+    this.postService.getPosts().subscribe(
       posts => {
         this.posts = posts;
         this.posts.sort((a, b) => new Date(b.localDateTime).getTime() - new Date(a.localDateTime).getTime());

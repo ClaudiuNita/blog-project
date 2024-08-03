@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { Post } from 'src/app/models/Post';
-import { UserService } from 'src/app/services/user.service';
+import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
   selector: 'app-blog-posts',
@@ -10,32 +11,26 @@ import { UserService } from 'src/app/services/user.service';
 export class BlogPostsComponent implements OnInit {
 
   posts: Post[] = [];
-  username: string = '';
+  currentUserUsername = this.appComponent.currentUserUsername;
 
-  constructor(private userService: UserService) { }
+  constructor(private postService: PostService,
+              private appComponent: AppComponent) { }
 
   ngOnInit(): void {
-    this.getUsername();
     this.getPosts();
   }
 
   getPosts(): void {
-    this.userService.getPosts().subscribe(
+    this.postService.getPosts().subscribe(
       posts => {
         posts.sort((a, b) => new Date(b.localDateTime).getTime() - new Date(a.localDateTime).getTime());
-        this.posts = posts.filter(post => post.author.username === this.username);
+        this.posts = posts.filter(post => post.author.username === this.currentUserUsername);
       }
     );
   }
 
-  getUsername() {
-    this.userService.getUsername().subscribe(
-      user => this.username = user.info
-    );
-  }
-
   savePost(content: string): void {
-    this.userService.savePost(content, this.username).subscribe(
+    this.postService.savePost(content, this.currentUserUsername).subscribe(
       () => window.location.reload()
     );
   }

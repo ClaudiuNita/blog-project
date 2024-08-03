@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDetails } from 'src/app/models/UserDetails';
-import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { UserDetails } from 'src/app/models/UserDetails';
+import { UserDetailsService } from 'src/app/services/userDetails/user-details.service';
 
 @Component({
   selector: 'app-user-details',
@@ -16,7 +16,7 @@ export class UserDetailsComponent implements OnInit {
   currentUserDetailsId = BigInt(this.appComponent.currentUserDetailsId);
 
   constructor(
-    private userService: UserService,
+    private userDetailsService: UserDetailsService,
     private route: ActivatedRoute,
     private appComponent: AppComponent
   ) { }
@@ -27,13 +27,13 @@ export class UserDetailsComponent implements OnInit {
 
   getUserDetails(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!);
-    this.userService.getUserDetails(id)
+    this.userDetailsService.getUserDetails(id)
       .subscribe(userD => this.userDetails = userD);
   }
 
   updateUserDetails(): void {
-    if(this.userDetails)
-      this.userService.updateUserDetails(this.userDetails)
-        .subscribe(() => window.location.reload())
+    if (this.userDetails)
+      this.userDetailsService.updateUserDetails(this.userDetails)
+        .subscribe(() => window.location.reload());
   }
 }
