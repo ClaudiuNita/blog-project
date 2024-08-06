@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
 import { UserDetails } from 'src/app/models/UserDetails';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { UserDetailsService } from 'src/app/services/userDetails/user-details.service';
 
 @Component({
@@ -12,14 +12,10 @@ import { UserDetailsService } from 'src/app/services/userDetails/user-details.se
 export class UserDetailsComponent implements OnInit {
 
   userDetails: UserDetails | undefined;
-  isAdmin = this.appComponent.isAdmin;
-  currentUserDetailsId = BigInt(this.appComponent.currentUserDetailsId);
 
-  constructor(
-    private userDetailsService: UserDetailsService,
-    private route: ActivatedRoute,
-    private appComponent: AppComponent
-  ) { }
+  constructor(private userDetailsService: UserDetailsService,
+              private route: ActivatedRoute,
+              public authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getUserDetails();
@@ -35,5 +31,9 @@ export class UserDetailsComponent implements OnInit {
     if (this.userDetails)
       this.userDetailsService.updateUserDetails(this.userDetails)
         .subscribe(() => window.location.reload());
+  }
+
+  toBigInt(id: number) {
+    return BigInt(id);
   }
 }

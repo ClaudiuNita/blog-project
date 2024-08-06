@@ -65,7 +65,7 @@
         </tr>
     </table>
 
-    <div style="display: flex; justify-content: end; padding: 10px;"><button [disabled]="!isAdmin? !(currentUserDetailsId == userDetails.id) : false" (click)="updateUserDetails()">Update</button></div>
+    <div style="display: flex; justify-content: end; padding: 10px;"><button [disabled]="!authService.isAdmin? !(toBigInt(authService.currentUserDetailsId) == userDetails.id) : false" (click)="updateUserDetails()">Update</button></div>
 </div>
 
 <div *ngIf="!userDetails" class="alert">No details for admin account!</div>

@@ -20,8 +20,7 @@ export class HomeComponent implements OnInit {
   getPosts(): void {
     this.postService.getPosts().subscribe(
       posts => {
-        this.posts = posts;
-        this.posts.sort((a, b) => new Date(b.localDateTime).getTime() - new Date(a.localDateTime).getTime());
+        this.posts = posts.sort((a, b) => new Date(b.localDateTime).getTime() - new Date(a.localDateTime).getTime());
       }
     );
   }

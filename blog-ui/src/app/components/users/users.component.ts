@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/User';
-import { UserService } from 'src/app/services/user/user.service';
-import { AppComponent } from 'src/app/app.component';
 import { FormControl } from "@angular/forms";
+import { User } from 'src/app/models/User';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-users',
@@ -15,11 +15,9 @@ export class UsersComponent implements OnInit {
   user?: User;
   form = new FormControl('');
   error = '';
-  isAdmin = this.appComponent.isAdmin;
-  isLoggedIn = this.appComponent.isLoggedIn;
 
   constructor(private userService: UserService,
-              private appComponent: AppComponent) { }
+              public authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getUsers()
@@ -50,7 +48,7 @@ export class UsersComponent implements OnInit {
       },
 
       err => {
-          if (this.isLoggedIn) {
+          if (this.authService.isLoggedIn) {
             this.error = err.statusText;
           } else {
             this.error = "User not logged in!";

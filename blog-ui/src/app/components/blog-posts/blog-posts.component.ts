@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from 'src/app/app.component';
 import { Post } from 'src/app/models/Post';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
@@ -11,10 +11,9 @@ import { PostService } from 'src/app/services/post/post.service';
 export class BlogPostsComponent implements OnInit {
 
   posts: Post[] = [];
-  currentUserUsername = this.appComponent.currentUserUsername;
 
   constructor(private postService: PostService,
-              private appComponent: AppComponent) { }
+              private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getPosts();
@@ -24,13 +23,13 @@ export class BlogPostsComponent implements OnInit {
     this.postService.getPosts().subscribe(
       posts => {
         posts.sort((a, b) => new Date(b.localDateTime).getTime() - new Date(a.localDateTime).getTime());
-        this.posts = posts.filter(post => post.author.username === this.currentUserUsername);
+        this.posts = posts.filter(post => post.author.username === this.authService.currentUserUsername);
       }
     );
   }
 
   savePost(content: string): void {
-    this.postService.savePost(content, this.currentUserUsername).subscribe(
+    this.postService.savePost(content, this.authService.currentUserUsername).subscribe(
       () => window.location.reload()
     );
   }

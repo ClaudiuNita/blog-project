@@ -34,9 +34,9 @@
 
 <div *ngIf="error" class="alert">{{error}}</div>
 
-<p *ngIf="isLoggedIn">User database contents:</p>
+<p *ngIf="authService.isLoggedIn">User database contents:</p>
 
-<table *ngIf="isLoggedIn">
+<table *ngIf="authService.isLoggedIn">
   <tr>
     <th>Id</th>
     <th>Email</th>
@@ -50,8 +50,8 @@
     </td>
     <td>
       <button routerLink="/user-details/{{user.id}}">View</button>
-      <button [disabled]="!isAdmin" (click)="updateUser(user.id, user.email)">Update</button>
-      <button [disabled]="!isAdmin" (click)="deleteUser(user.id)">Delete</button>
+      <button [disabled]="!authService.isAdmin" (click)="updateUser(user.id, user.email)">Update</button>
+      <button [disabled]="!authService.isAdmin" (click)="deleteUser(user.id)">Delete</button>
     </td>
   </tr>
   
@@ -65,7 +65,7 @@
       </form>
     </td>
     <td>
-      <input [disabled]="!isAdmin" id="submit" type="submit" value="Add" (click)="addUser(email.value)">
+      <input [disabled]="!authService.isAdmin" id="submit" type="submit" value="Add" (click)="addUser(email.value)">
     </td>
   </tr>
 </table>
