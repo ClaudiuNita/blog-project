@@ -11,12 +11,15 @@ import { PostService } from 'src/app/services/post/post.service';
 export class BlogPostsComponent implements OnInit {
 
   posts: Post[] = [];
+  error = '';
 
   constructor(private postService: PostService,
-              private authService: AuthenticationService) { }
+              public authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getPosts();
+    if (!this.authService.isLoggedIn) 
+      this.error = 'User not logged in!';
   }
 
   getPosts(): void {

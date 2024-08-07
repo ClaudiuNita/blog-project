@@ -28,3 +28,18 @@ input {
     font-size: x-small;
     font-style: italic;
 }
+
+.alert {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid;
+    border-radius: 4px;
+  }
+
+  .input-alert {
+    border-color: #f5c6cb;
+  }

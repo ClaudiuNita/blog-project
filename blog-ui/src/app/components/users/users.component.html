@@ -4,14 +4,14 @@
   <label><b>User Id: </b></label>
   <div>
     <input type="text" name="userId" [formControl]="form">
-    <input type="submit" value="Search" (click)="getUser()">
+    <input type="submit" [disabled]="error" value="Search" (click)="getUser()">
   </div>
 </form>
 <form>
   <label><b>Username: </b></label>
   <div>
     <input type="text" name="userId" #username>
-    <input type="submit" value="Search" (click)="getUserByUsername(username.value)">
+    <input type="submit" [disabled]="error" value="Search" (click)="getUserByUsername(username.value)">
   </div>
 </form>
 

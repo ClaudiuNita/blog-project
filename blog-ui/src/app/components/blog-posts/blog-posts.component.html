@@ -1,4 +1,6 @@
-<input id="post-content" name="content" placeholder="Write a post..." #content (keyup.enter)="savePost(content.value)">
+<input id="post-content" [class.input-alert]="!authService.isLoggedIn" name="content" [disabled]="!authService.isLoggedIn" placeholder="Write a post..." #content (keyup.enter)="savePost(content.value)">
+
+<div *ngIf="!authService.isLoggedIn" class="alert"> {{ error }} </div>
 
 <div *ngFor="let post of posts" class="posts">
     <p>{{post.content}}</p>

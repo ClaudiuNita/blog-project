@@ -1,3 +1,4 @@
+INSERT INTO USERS (id, username, email, password) VALUES (0, 'admin', '', 'admin');
 INSERT INTO USERS (id, username, email, password) VALUES (default, 'claudiu', 'claudiu@tremend.com', 'ccc');
 INSERT INTO USERS (id, username, email, password) VALUES (default, 'maria', 'maria@tremend.com', 'ccc');
 INSERT INTO USERS (id, username, email, password) VALUES (default, 'dragos', 'dragos@tremend.com', 'ccc');

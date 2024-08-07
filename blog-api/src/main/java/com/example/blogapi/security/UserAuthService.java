@@ -34,7 +34,6 @@ public class UserAuthService implements UserDetailsService {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
 
         if (username.equals("admin")) {
-            user = new User(username, "admin");
             SimpleGrantedAuthority authorityAdmin = new SimpleGrantedAuthority("ADMIN");
             authorities.add(authorityAdmin);
         }
