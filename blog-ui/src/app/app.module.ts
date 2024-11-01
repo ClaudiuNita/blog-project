@@ -11,6 +11,7 @@ import { BlogPostsComponent } from './components/blog-posts/blog-posts.component
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
     UsersComponent,
     BlogPostsComponent,
     UserDetailsComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

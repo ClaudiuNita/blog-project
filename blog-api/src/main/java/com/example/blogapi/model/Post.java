@@ -29,12 +29,12 @@ public class Post {
     private List<PostComment> comments;
 
     public Post() {
-        localDateTime = localDateTime.now();
+        localDateTime = LocalDateTime.now();
     }
 
     public Post(String content) {
         this.content = content;
-        localDateTime = localDateTime.now();
+        localDateTime = LocalDateTime.now();
     }
 
     public Long getId() {

@@ -1,7 +1,6 @@
 <h1>Register to BlogApp</h1>
 <div>
     <form (ngSubmit)="registerUser()" #registerUserForm="ngForm">
-    
         <div class="register-input">
             <label for="username">Username:</label>
             <input type="text" required [(ngModel)]="user.username" id="username" name="username" #username="ngModel" placeholder="Username">
@@ -23,7 +22,7 @@
                 Password is required!
             </div>
         </div>
-        <button type="submit" [disabled]="!registerUserForm.form.valid">Submit</button>
         
+        <button type="submit" [disabled]="!registerUserForm.form.valid">Submit</button>
     </form>
 </div>

@@ -1,0 +1,31 @@
+.alert {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid;
+    border-radius: 4px;
+}
+
+.login-input {
+    display: block;
+    width: 100%;
+    margin: 5px 0px;
+}
+
+.login-input input {
+    padding: 5px;
+    border-style: outset;
+    border-color: aliceblue;
+    border-width: 3px;
+    border-radius: 5px;
+}
+
+button {
+    border-style: outset;
+    border-color: aliceblue;
+    border-width: 3px;
+    border-radius: 5px;
+    margin-top: 5px;
+}

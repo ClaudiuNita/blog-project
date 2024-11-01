@@ -1,18 +1,20 @@
 package com.example.blogapi.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import com.example.blogapi.DTO.UserDTO;
 import com.example.blogapi.model.User;
 import com.example.blogapi.model.UserDetails;
 import com.example.blogapi.repository.UserDetailsRepository;
 import com.example.blogapi.repository.UserRepository;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException.NotFound;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service

@@ -23,14 +23,15 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> {
-                                requests
-                                        .antMatchers("/blog/username").permitAll()
-                                        .antMatchers("/blog/new-user").permitAll()
-                                        .antMatchers("/blog/posts").permitAll()
-                                        .antMatchers("/blog/user").hasAuthority("ADMIN")
-                                        // .antMatchers("/blog/user-details").hasAuthority("ADMIN")
-                                        .anyRequest().authenticated();
-                                }
+                        requests
+                            .antMatchers("/blog/login").permitAll()
+                            .antMatchers("/blog/username").permitAll()
+                            .antMatchers("/blog/new-user").permitAll()
+                            .antMatchers("/blog/posts").permitAll()
+                            .antMatchers("/blog/user").hasAuthority("ADMIN")
+                            // .antMatchers("/blog/user-details").hasAuthority("ADMIN")
+                            .anyRequest().authenticated();
+                        }
                 )
                 .formLogin()
                 .defaultSuccessUrl("http://localhost:4200/acasa", true)

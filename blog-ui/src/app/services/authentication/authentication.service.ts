@@ -19,6 +19,10 @@ export class AuthenticationService {
   constructor(private http: HttpClient, 
               private userDetailsService: UserDetailsService) { }
 
+  login(username: string, password: string) {
+    return this.http.post(`${this.baseUrl}/login`, { username, password });
+  }  
+
   getUsername() {
     return this.http.get<User>(this.usernameUrl);
   }
