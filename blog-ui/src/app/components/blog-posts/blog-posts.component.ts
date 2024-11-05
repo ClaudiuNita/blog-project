@@ -9,7 +9,7 @@ import { PostService } from 'src/app/services/post/post.service';
   styleUrls: ['./blog-posts.component.css']
 })
 export class BlogPostsComponent implements OnInit {
-
+  
   posts: Post[] = [];
   error = '';
 
@@ -35,5 +35,21 @@ export class BlogPostsComponent implements OnInit {
     this.postService.savePost(content, this.authService.currentUserUsername).subscribe(
       () => window.location.reload()
     );
+  }
+
+  updatePost(post: Post) {  
+    this.postService.editPost(post).subscribe(
+      () => window.location.reload()
+    );
+  }
+
+  deletePost(id: bigint) {
+    this.postService.deletePost(id).subscribe(
+      () => window.location.reload()
+    );
+  } 
+  
+  editPost(post: Post) {
+    post.editable = !post.editable;
   }
 }

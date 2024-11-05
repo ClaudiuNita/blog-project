@@ -3,12 +3,18 @@
 <div *ngIf="!authService.isLoggedIn" class="alert"> {{ error }} </div>
 
 <div *ngFor="let post of posts" class="posts">
-    <p>{{post.content}}</p>
+    <div class="button-container">
+        <button (click)="editPost(post)" [class.active]="post.editable">&#9998;</button>
+        <button (click)="updatePost(post)">&#x2714;</button>
+        <button (click)="deletePost(post.id)">&#x2715;</button>
+    </div>
+    
+    <textarea class="textarea-control" [(ngModel)]="post.content" [disabled]="!post.editable">{{ post.content }}</textarea>
 
     <div class="post-info">
         <p>By <a routerLink="/user-details/{{post.author.id}}">{{post.author.username}}</a></p>
         <p>
-            {{post.localDateTime | date: "HH:mm dd:MM:yyyy"}}
+            {{ post.localDateTime | date: "HH:mm dd:MM:yyyy" }}
         </p>
     </div>
 </div>

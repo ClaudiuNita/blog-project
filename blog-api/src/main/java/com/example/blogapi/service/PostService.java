@@ -3,6 +3,7 @@ package com.example.blogapi.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 
@@ -48,5 +49,26 @@ public class PostService {
         Post post = new Post(content);
         post.setAuthor(user);
         postRepository.save(post);
+    }
+
+    public void deletePost(Long id) {
+
+        Optional<Post> post = postRepository.findById(id);
+        if (post.isPresent()) {
+            postRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("No post with id " + id);
+        }
+    }
+
+    public void updatePost(PostDTO postDTO) {
+        
+        Optional<Post> post = postRepository.findById(postDTO.getId());
+        if (post.isPresent()) {
+            post.get().setContent(postDTO.getContent());
+            postRepository.save(post.get());
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 }
