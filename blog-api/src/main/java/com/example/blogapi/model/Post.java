@@ -32,7 +32,8 @@ public class Post {
         localDateTime = LocalDateTime.now();
     }
 
-    public Post(String content) {
+    public Post(String title, String content) {
+        this.title = title;
         this.content = content;
         localDateTime = LocalDateTime.now();
     }

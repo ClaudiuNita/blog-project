@@ -16,3 +16,16 @@
     font-size: x-small;
     font-style: italic;
 }
+
+.post {
+    width: 100%; /* Ensure the `.aa` div takes the full width of the `.posts` container */
+    box-sizing: border-box; /* Includes padding and border in the width calculation */
+}
+
+.post p {
+    margin: 0 0 10px; /* Add spacing between paragraphs */
+    padding: 8px; /* Optional padding for better readability */
+    word-wrap: break-word; /* Handle long words or text wrapping */
+    width: 100%; /* Ensure the `<p>` tags take the full width of the `.aa` container */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}

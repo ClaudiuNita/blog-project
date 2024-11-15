@@ -1,13 +1,23 @@
-#post-content {
-    display: block;
+#post-input {
+    display: flex;
+    flex-direction: column;
     width: 300px;
-    height: 50px;
     border-style: outset;
     border-color: aliceblue;
     border-width: 3px;
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 5px;
+}
+
+input {
+  margin-bottom: 3px;
+}
+
+#post-input .input-textarea {
+  border-color: transparent;
+  padding: 7px 7px 8px;
+  line-height: 1.28;
 }
 
 .posts {
@@ -20,6 +30,23 @@
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 5px;
+}
+
+.post-title {
+  width: 94%;
+  flex: 1;
+  border-color: transparent;
+  padding: 7px 7px 8px;
+  line-height: 1.28;
+  resize: none;
+}
+
+.post-content {
+  flex: 1;
+  border-color: transparent;
+  padding: 7px 7px 8px;
+  line-height: 1.28;
+  resize: none;
 }
 
 .post-info {
@@ -44,15 +71,7 @@
     border-color: #f5c6cb;
   }
 
-  .textarea-control {
-    flex: 1;
-    border-color: transparent;
-    padding: 7px 7px 8px;
-    line-height: 1.28;
-    resize: none;
-  }
-
-  button {
+  .post-button {
     display: inline;
     height: 20px;
     width: 20px;

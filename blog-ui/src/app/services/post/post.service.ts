@@ -16,15 +16,15 @@ export class PostService {
     return this.http.get<Post[]>(this.baseUrl + '/posts');
   }
 
-  savePost(content: string, username: string): Observable<any> {
-    return this.http.post(this.baseUrl + '/post', { content, author: { username } } );
+  savePost(title: string, content: string, username: string): Observable<any> {
+    return this.http.post(this.baseUrl + '/post', { title, content, author: { username } });
   }
 
+  updatePost(post: Post) {
+    return this.http.put(this.baseUrl + '/post', post);
+  }
+  
   deletePost(id: bigint) {
     return this.http.delete(this.baseUrl + '/post/' + id);
-  }
-
-  editPost(post: Post) {
-    return this.http.put(this.baseUrl + '/post', { id: post.id, content: post.content });
   }
 }

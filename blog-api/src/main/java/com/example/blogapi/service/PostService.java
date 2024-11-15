@@ -31,6 +31,7 @@ public class PostService {
         posts.forEach(post -> 
             postsDTO.add(
                 new PostDTO(post.getId(),
+                            post.getTitle(),
                             post.getContent(),
                             post.getLocalDateTime(),
                             new UserDTO(post.getAuthor().getId(),
@@ -40,13 +41,13 @@ public class PostService {
         return postsDTO;
     }
 
-    public void savePost(String content, String username) {
+    public void savePost(String title, String content, String username) {
 
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new NoSuchElementException(username);
         }
-        Post post = new Post(content);
+        Post post = new Post(title, content);
         post.setAuthor(user);
         postRepository.save(post);
     }
@@ -64,7 +65,8 @@ public class PostService {
     public void updatePost(PostDTO postDTO) {
         
         Optional<Post> post = postRepository.findById(postDTO.getId());
-        if (post.isPresent()) {
+        if (post.isPresent()) {    
+            post.get().setTitle(postDTO.getTitle());
             post.get().setContent(postDTO.getContent());
             postRepository.save(post.get());
         } else {

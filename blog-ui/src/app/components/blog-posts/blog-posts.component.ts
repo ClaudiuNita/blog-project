@@ -31,25 +31,25 @@ export class BlogPostsComponent implements OnInit {
     );
   }
 
-  savePost(content: string): void {
-    this.postService.savePost(content, this.authService.currentUserUsername).subscribe(
+  savePost(title: string, content: string): void {
+    this.postService.savePost(title, content, this.authService.currentUserUsername).subscribe(
       () => window.location.reload()
     );
   }
 
   updatePost(post: Post) {  
-    this.postService.editPost(post).subscribe(
+    this.postService.updatePost(post).subscribe(
       () => window.location.reload()
     );
   }
 
+  editPost(post: Post) {
+    post.editable = !post.editable;
+  }
+  
   deletePost(id: bigint) {
     this.postService.deletePost(id).subscribe(
       () => window.location.reload()
     );
   } 
-  
-  editPost(post: Post) {
-    post.editable = !post.editable;
-  }
 }

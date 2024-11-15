@@ -33,19 +33,19 @@ public class PostController {
 
     @PostMapping("/post")
     public void savePost(@RequestBody PostDTO postReq) {
-
-        postService.savePost(postReq.getContent(), postReq.getAuthor().getUsername());
-    }
-
-    @DeleteMapping("/post/{id}")
-    public void deletePost(@PathVariable("id") Long id) {
-
-        postService.deletePost(id);
+        
+        postService.savePost(postReq.getTitle(), postReq.getContent(), postReq.getAuthor().getUsername());
     }
 
     @PutMapping("/post")
     public void updatePost(@RequestBody PostDTO post) {
         
         postService.updatePost(post);
+    }
+    
+    @DeleteMapping("/post/{id}")
+    public void deletePost(@PathVariable("id") Long id) {
+
+        postService.deletePost(id);
     }
 }

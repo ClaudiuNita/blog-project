@@ -1,5 +1,8 @@
 <div *ngFor="let post of posts" class="posts">
-    <p>{{post.content}}</p>
+    <div class="post">        
+        <p>{{ post.title }}</p>
+        <p>{{ post.content }}</p>
+    </div>
 
     <div class="post-info">
         <p>By <a routerLink="/user-details/{{post.author.id}}">{{post.author.username}}</a></p>
