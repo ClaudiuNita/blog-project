@@ -1,6 +1,7 @@
 .posts {
     display: flex;
     flex-direction: column;
+    font-family: Arial, sans-serif;
     width: 300px;
     border-style: outset;
     border-color: aliceblue;
@@ -8,13 +9,6 @@
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 5px;
-}
-
-.post-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: x-small;
-    font-style: italic;
 }
 
 .post {
@@ -28,4 +22,146 @@
     word-wrap: break-word; /* Handle long words or text wrapping */
     width: 100%; /* Ensure the `<p>` tags take the full width of the `.aa` container */
     box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.post-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    font-style: italic;
+    font-size: x-small;
+}
+
+.post-comments {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 16px;
+}
+
+.comment-input {
+    margin-bottom: 7px;
+}
+
+.comment-input-textarea {
+    display: block;
+    padding: 7px 7px 8px;
+    line-height: 1.28;
+    margin-bottom: 5px;
+    width: 93%;
+}
+
+/* General button styling */
+.save-comment-button, .comments-button {
+    background-color: #007bff; /* Primary color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    font-size: 14px; /* Adjust size for better alignment */
+    line-height: 1; /* Ensure no extra spacing around the symbol */
+    padding: 0; /* Remove any internal padding */
+    vertical-align: middle; /* Ensure alignment inside flexbox */
+}
+
+/* Hover effect */
+.save-comment-button:hover, .comments-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly larger */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+}
+
+/* Active state */
+.save-comment-button:active, .comments-button:active {
+    background-color: #004080; /* Even darker blue */
+    transform: scale(1); /* Restore size */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+}
+
+/* Focus state for accessibility */
+.save-comment-button:focus, .comments-button:focus {
+    outline: 2px solid #80bdff; /* Highlight for keyboard navigation */
+    outline-offset: 2px;
+}
+
+/* Styling for individual comments */
+.comments > div {
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Comment text styling */
+.comments > div p:first-of-type {
+    font-size: 12px;
+    color: #333333;
+    margin-bottom: 8px;
+    word-wrap: break-word; /* Ensure long words don't break layout */
+}
+
+.comments button:hover, button.active {
+    background-color:aliceblue;
+    border-color: antiquewhite;
+}
+
+.post-comment-button {
+    display: inline;
+    height: 20px;
+    width: 20px;
+    border-color: transparent;
+    background-color: white;
+}
+
+.comment-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comments textarea {
+    width: 98%;
+}
+
+/* Comment info section */
+.comment-info {
+    display: flex;
+    justify-content: space-between;
+    color: #777777;
+    margin-top: 8px;
+}
+
+/* Style for username */
+.comment-info p:first-of-type {
+    font-weight: bold;
+    color: #555555;
+}
+
+/* Style for timestamp */
+.comment-info p:last-of-type {
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* Add responsiveness */
+@media (max-width: 600px) {
+    .comments > div {
+        padding: 10px;
+    }
+    
+    .comment-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
 }

@@ -8,5 +8,6 @@ INSERT INTO USER_DETAILS (id, username, email, password, age, gender, country, u
 INSERT INTO POST (id, title, content, localDateTime, author_id) VALUES (default, 'titlee', 'contentt', '2018-11-15T08:22:12', 1);
 INSERT INTO POST (id, title, content, localDateTime, author_id) VALUES (default, 'title', 'content', '2017-11-15T08:22:12', 1);
 INSERT INTO POST (id, title, content, localDateTime, author_id) VALUES (default, 'title', 'maria post', '2019-11-15T08:22:12', 2);
-INSERT INTO POST_COMMENT VALUES (default, 1);
-INSERT INTO POST_COMMENT VALUES (default, 2);
+INSERT INTO POST_COMMENT (id, comment, localDateTime, post_id, user_id) VALUES (default, 'comment1', '2018-11-15T08:22:12', 1, 1);
+INSERT INTO POST_COMMENT (id, comment, localDateTime, post_id, user_id) VALUES (default, 'comment2', '2019-11-15T08:22:12', 1, 1);
+INSERT INTO POST_COMMENT (id, comment, localDateTime, post_id, user_id) VALUES (default, 'comment3', '2018-11-15T08:22:12', 3, 2);

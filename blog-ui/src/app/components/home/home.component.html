@@ -5,10 +5,35 @@
     </div>
 
     <div class="post-info">
-        <p>By <a routerLink="/user-details/{{post.author.id}}">{{post.author.username}}</a></p>
-        <p>
-            {{post.localDateTime | date: "HH:mm dd:MM:yyyy"}}
-        </p>
+        <p>By <a routerLink="/user-details/{{post.author.id}}">{{ post.author.username }}</a></p>
+        <p>{{ post.localDateTime | date: "HH:mm dd:MM:yyyy" }}</p>
+    </div>
+
+    <button class="comments-button" (click)="getPostCommentsByPostId(post.id)">&#9997;</button>
+    
+    <div class="post-comments" *ngIf="commentSectionState.get(post.id)">
+        <div class="comment-input" *ngIf="authService.isLoggedIn" >
+            <textarea class="comment-input-textarea" name="comment" placeholder="Write a comment..." #comment></textarea>
+            <button class="save-comment-button" (click)="savePostComment(comment.value, post.id)">&#10148;</button>
+        </div>
+        
+        <div class="comments">
+            <div *ngFor="let comment of comments.get(post.id)">
+                <div class="comment-button-container" *ngIf="authService.currentUserUsername === comment.user">
+                    <button class="post-comment-button" (click)="editComment.set(comment.id, !editComment.get(comment.id))" [class.active]="editComment.get(comment.id)">&#9998;</button>
+                    <button class="post-comment-button" (click)="updateComment(comment.id, comment.comment)">&#x2714;</button>
+                    <button class="post-comment-button" (click)="deletePostComment(comment.id)">&#x2715;</button>
+                </div>
+                
+                <p *ngIf="!editComment.get(comment.id)">{{ comment.comment }}</p>
+                <textarea *ngIf="editComment.get(comment.id)" [(ngModel)]="comment.comment">{{ comment.comment }}</textarea>
+                
+                <div class="comment-info" *ngIf="!(comment.comment == 'Empty')">
+                    <p>{{ comment.user }}</p>
+                    <p>{{ comment.localDateTime | date: "HH:mm dd:MM:yyyy" }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

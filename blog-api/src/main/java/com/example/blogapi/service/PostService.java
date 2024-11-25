@@ -38,6 +38,7 @@ public class PostService {
                                         post.getAuthor().getUsername()))
             )
         );
+        
         return postsDTO;
     }
 
@@ -51,19 +52,9 @@ public class PostService {
         post.setAuthor(user);
         postRepository.save(post);
     }
-
-    public void deletePost(Long id) {
-
-        Optional<Post> post = postRepository.findById(id);
-        if (post.isPresent()) {
-            postRepository.deleteById(id);
-        } else {
-            throw new NoSuchElementException("No post with id " + id);
-        }
-    }
-
+    
     public void updatePost(PostDTO postDTO) {
-        
+            
         Optional<Post> post = postRepository.findById(postDTO.getId());
         if (post.isPresent()) {    
             post.get().setTitle(postDTO.getTitle());
@@ -71,6 +62,16 @@ public class PostService {
             postRepository.save(post.get());
         } else {
             throw new NoSuchElementException();
+        }
+    }
+
+    public void deletePost(Long id) {
+
+        Optional<Post> post = postRepository.findById(id);
+        if (post.isPresent()) {
+            postRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("No post with id: " + id);
         }
     }
 }
