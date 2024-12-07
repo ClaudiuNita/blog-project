@@ -12,6 +12,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { RegisterComponent } from './components/register/register.component';
 import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     {provide : LocationStrategy , useClass: HashLocationStrategy}

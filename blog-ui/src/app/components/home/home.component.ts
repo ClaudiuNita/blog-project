@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   comments = new Map<BigInt, PostComment[]>();
   commentSectionState = new Map<BigInt, boolean>();
   editComment = new Map<BigInt, boolean>();
+  searchText = '';
   
   constructor(private postService: PostService,
               private postCommentsService: PostCommentsService,
