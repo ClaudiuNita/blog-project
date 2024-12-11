@@ -1,25 +1,22 @@
 
 <div id="post-input">
     <input [class.input-alert]="!authService.isLoggedIn" [disabled]="!authService.isLoggedIn" 
-        name="title" placeholder="Write a title..." #title>
+        name="title" placeholder="Write a title.." #title>
     <textarea class="input-textarea" [class.input-alert]="!authService.isLoggedIn" [disabled]="!authService.isLoggedIn" 
-        name="content" placeholder="Write a post..." #content></textarea>
+        name="content" placeholder="Write a post.." #content></textarea>
     <button *ngIf="authService.isLoggedIn" (click)="savePost(title.value, content.value)" [disabled]="!authService.isLoggedIn">&#10148;</button>
 </div>
 
 <div *ngIf="!authService.isLoggedIn" class="alert"> {{ error }} </div>
 
 <div *ngFor="let post of posts" class="posts">
-    <div class="post-heading">
-        <div class="button-container">
-            <button class="post-button" (click)="editPost(post)" [class.active]="post.editable">&#9998;</button>
-            <button class="post-button" (click)="updatePost(post)">&#x2714;</button>
-            <button class="post-button" (click)="deletePost(post.id)">&#x2715;</button>
-        </div>
-
-        <textarea class="post-title" [(ngModel)]="post.title" [disabled]="!post.editable"></textarea>
+    <div class="button-container">
+        <button class="post-button" (click)="editPost(post)" [class.active]="post.editable">&#9998;</button>
+        <button class="post-button" (click)="updatePost(post)">&#x2714;</button>
+        <button class="post-button" (click)="deletePost(post.id)">&#x2715;</button>
     </div>
     
+    <textarea class="post-title" [(ngModel)]="post.title" [disabled]="!post.editable"></textarea>
     <textarea class="post-content" [(ngModel)]="post.content" [disabled]="!post.editable"></textarea>
 
     <div class="post-info">

@@ -92,25 +92,22 @@ button.active {
 .button-container {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 3px;
 }
   
-.post-title {
-    width: 94%;
+.post-title,.post-content {
     flex: 1;
-    font-family: Arial, sans-serif;
     border-color: transparent;
+    font-family: Arial, sans-serif;
     padding: 7px 7px 8px;
     line-height: 1.28;
     resize: none;
 }
 
-.post-content {
-    flex: 1;
-    border-color: transparent;
-    font-family: Arial, sans-serif;
-    padding: 7px 7px 8px;
-    line-height: 1.28;
-    resize: none;
+.post-title {
+    width: 94%;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .post-info {
