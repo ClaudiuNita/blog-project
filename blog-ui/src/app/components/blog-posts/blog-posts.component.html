@@ -4,7 +4,9 @@
         name="title" placeholder="Write a title.." #title>
     <textarea class="input-textarea" [class.input-alert]="!authService.isLoggedIn" [disabled]="!authService.isLoggedIn" 
         name="content" placeholder="Write a post.." #content></textarea>
-    <button *ngIf="authService.isLoggedIn" (click)="savePost(title.value, content.value)" [disabled]="!authService.isLoggedIn">&#10148;</button>
+    <div>
+        <button *ngIf="authService.isLoggedIn" (click)="savePost(title.value, content.value)" [disabled]="!authService.isLoggedIn">&#10148;</button>
+    </div>
 </div>
 
 <div *ngIf="!authService.isLoggedIn" class="alert"> {{ error }} </div>

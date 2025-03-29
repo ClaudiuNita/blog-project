@@ -1,5 +1,43 @@
+table {
+  font-family: Arial, sans-serif;
+  width: 400px;
+}
+
 td, th {
-  border: 2px solid #888888;
+  border-style: outset;
+  border-color: aliceblue;
+  border-width: 3px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+
+.search-fields {
+  display: flex;
+  flex-direction: column; /* Arrange children in a vertical column */
+  align-items: center;    /* Center forms horizontally */
+  gap: 10px;  
+  font-family: Arial, sans-serif;
+  border-style: outset;
+  border-color: aliceblue;
+  border-width: 3px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  border-style: outset;
+  border-color: aliceblue;
+  border-width: 3px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
 }
 
 .addForm {

@@ -1,22 +1,23 @@
-<p>Search users from database:</p>
+<p>Search Users</p>
 
-<form>
-  <label><b>User Id: </b></label>
-  <div>
-    <input type="text" name="userId" [formControl]="form">
-    <input type="submit" [disabled]="error" value="Search" (click)="getUser()">
-  </div>
-</form>
-<form>
-  <label><b>Username: </b></label>
-  <div>
-    <input type="text" name="userId" #username>
-    <input type="submit" [disabled]="error" value="Search" (click)="getUserByUsername(username.value)">
-  </div>
-</form>
+<div class="search-fields">
+  <form>
+    <label><b>User Id</b></label>
+    <div>
+      <input type="text" name="userId" [formControl]="form">
+      <input type="submit" [disabled]="error" value="Search" (click)="getUser()">
+    </div>
+  </form>
+  <form>
+    <label><b>Username</b></label>
+    <div>
+      <input type="text" name="userId" #username>
+      <input type="submit" [disabled]="error" value="Search" (click)="getUserByUsername(username.value)">
+    </div>
+  </form>
+</div>
 
 <div *ngIf="user">
-  <p>Rezultat:</p>
   <button style="margin-bottom: 5px;" (click)="clearUser()">Clear</button>
   <table>
     <tr>
@@ -34,27 +35,15 @@
 
 <div *ngIf="error" class="alert">{{error}}</div>
 
-<p *ngIf="authService.isLoggedIn">User database contents:</p>
+<p *ngIf="authService.isLoggedIn">Users</p>
 
-<table *ngIf="authService.isLoggedIn">
+<table class="users-table" *ngIf="authService.isLoggedIn">
   <tr>
     <th>Id</th>
     <th>Email</th>
     <th>Actions</th>
   </tr>
 
-  <tr *ngFor="let user of users">
-    <td> {{user.id}} </td>
-    <td>
-      <input type="text" [(ngModel)]="user.email">
-    </td>
-    <td>
-      <button routerLink="/user-details/{{user.id}}">View</button>
-      <button [disabled]="!authService.isAdmin" (click)="updateUser(user.id, user.email)">Update</button>
-      <button [disabled]="!authService.isAdmin" (click)="deleteUser(user.id)">Delete</button>
-    </td>
-  </tr>
-  
   <tr>
     <td>
       --
@@ -66,6 +55,18 @@
     </td>
     <td>
       <input [disabled]="!authService.isAdmin" id="submit" type="submit" value="Add" (click)="addUser(email.value)">
+    </td>
+  </tr>
+
+  <tr *ngFor="let user of users">
+    <td> {{user.id}} </td>
+    <td>
+      <input type="text" [(ngModel)]="user.email">
+    </td>
+    <td>
+      <button routerLink="/user-details/{{user.id}}">View</button>
+      <button [disabled]="!authService.isAdmin" (click)="updateUser(user.id, user.email)">Update</button>
+      <button [disabled]="!authService.isAdmin" (click)="deleteUser(user.id)">Delete</button>
     </td>
   </tr>
 </table>
