@@ -1,64 +1,58 @@
 
 <div *ngIf="userDetails">
-
-    <h2>User ID: {{userDetails.id}}</h2>
+    <h2>{{ userDetails.username }}, id: {{userDetails.id}}</h2>
     <table>
         <th>Field</th>
         <th>Input</th>
 
         <tr>
-            <td>
-                <label for="username">Username: </label>
-            </td>
+            <th>
+                <label for="username">Username</label>
+            </th>
             <td>
                 <input id="username" [(ngModel)]="userDetails.username" placeholder="name">
             </td>
         </tr>
-    
         <tr>
-            <td>
-                <label for="email">Email: </label>
-            </td>
+            <th>
+                <label for="email">Email</label>
+            </th>
             <td>
                 <input id="email" [(ngModel)]="userDetails.email" placeholder="email">
             </td>
         </tr>
-    
         <tr>
-            <td>
-                <label for="password">Password: </label>
-            </td>
+            <th>
+                <label for="password">Password</label>
+            </th>
             <td>
                 <input type="password" id="password" [(ngModel)]="userDetails.password" placeholder="password">
             </td>
         </tr>
-
         <tr>
-            <td>
-                <label for="age">Age: </label>
-            </td>
+            <th>
+                <label for="age">Age</label>
+            </th>
             <td>
                 <input id="age" [(ngModel)]="userDetails.age" placeholder="age">
             </td>
         </tr>
-
         <tr>
+            <th>
+                <label for="gender">Gender</label>
+            </th>
             <td>
-                <label for="gender">Gender: </label>
-            </td>
-            <td>
-                <select id="gender" name="gender" [(ngModel)]="userDetails.gender" placeholder="gender" style="width: 100%;">
+                <select id="gender" name="gender" [(ngModel)]="userDetails.gender" placeholder="gender">
                     <option value="female">Female</option>
                     <option value="male">Male</option>
-                    <option value="Other">Other</option>
+                    <option value="other">Other</option>
                 </select>
             </td>
         </tr>
-        
         <tr>
-            <td>
-                <label for="country">Country: </label>
-            </td>
+            <th>
+                <label for="country">Country</label>
+            </th>
             <td>
                 <input id="country" [(ngModel)]="userDetails.country" placeholder="country">
             </td>

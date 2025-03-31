@@ -37,7 +37,7 @@
     
       <nav class="login-nav">
         <a href="http://localhost:8090/h2-console/" target="_blank" *ngIf="authService.isAdmin">H2-Console</a>
-        <a routerLink="/user-details/{{authService.currentUserDetailsId}}" routerLinkActive="active-link" *ngIf="authService.isLoggedIn">Profile</a>
+        <a routerLink="/user-details/{{authService.currentUserDetailsId}}" routerLinkActive="active-link" *ngIf="authService.isLoggedIn">{{ authService.currentUserUsername }}</a>
         <a routerLink="/login" *ngIf="!authService.isLoggedIn">Login</a>
         <a href="http://localhost:8090/logout" *ngIf="authService.isLoggedIn">Logout</a>
         <a routerLink="/register" routerLinkActive="active-link" *ngIf="!authService.isLoggedIn">Register</a>

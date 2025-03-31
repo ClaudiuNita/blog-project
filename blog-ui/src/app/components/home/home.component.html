@@ -13,12 +13,16 @@
         <p>{{ post.localDateTime | date: "HH:mm dd:MM:yyyy" }}</p>
     </div>
 
-    <button class="comments-button" (click)="getPostCommentsByPostId(post.id)">&#9997;</button>
+    <div class="comments-button-div">
+        <button class="comments-button" (click)="getPostCommentsByPostId(post.id)">&#9997;</button>
+    </div>
     
     <div class="post-comments" *ngIf="commentSectionState.get(post.id)">
         <div class="comment-input" *ngIf="authService.isLoggedIn" >
             <textarea class="comment-input-textarea" name="comment" placeholder="Write a comment..." #comment></textarea>
-            <button class="save-comment-button" (click)="savePostComment(comment.value, post.id)">&#10148;</button>
+            <div>
+                <button class="save-comment-button" (click)="savePostComment(comment.value, post.id)">&#10148;</button>
+            </div>
         </div>
         
         <div class="comments">

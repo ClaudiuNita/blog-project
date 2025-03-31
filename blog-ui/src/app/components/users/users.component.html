@@ -1,18 +1,18 @@
-<p>Search Users</p>
+<h2>Search Users</h2>
 
 <div class="search-fields">
   <form>
     <label><b>User Id</b></label>
     <div>
       <input type="text" name="userId" [formControl]="form">
-      <input type="submit" [disabled]="error" value="Search" (click)="getUser()">
+      <input type="submit" [disabled]="!authService.isLoggedIn" value="Search" (click)="getUser()">
     </div>
   </form>
   <form>
     <label><b>Username</b></label>
     <div>
       <input type="text" name="userId" #username>
-      <input type="submit" [disabled]="error" value="Search" (click)="getUserByUsername(username.value)">
+      <input type="submit" [disabled]="!authService.isLoggedIn" value="Search" (click)="getUserByUsername(username.value)">
     </div>
   </form>
 </div>
@@ -35,7 +35,7 @@
 
 <div *ngIf="error" class="alert">{{error}}</div>
 
-<p *ngIf="authService.isLoggedIn">Users</p>
+<h2 *ngIf="authService.isLoggedIn">Users</h2>
 
 <table class="users-table" *ngIf="authService.isLoggedIn">
   <tr>
